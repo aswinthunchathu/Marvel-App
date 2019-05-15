@@ -1,0 +1,13 @@
+@import '../../../../node_modules/bootstrap/scss/functions';
+@import '../../../../node_modules/bootstrap/scss/variables';
+@import '../../../mixins';
+
+.menu {
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+
+    @media (min-width: map-get($grid-breakpoints, lg)) {
+        @include rem-fallback(margin, 50, 0, 0, 0);
+    }
+}

@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Teko');
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../node_modules/animate.css/animate.min.css';
+@import './mixins';
+
+$body-gradient: #45484d;
+
+html,
+body {
+    font-family: 'Teko', sans-serif;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background: $black;
+    background: -moz-linear-gradient(top, $body-gradient 0%, $black 100%);
+    background: -webkit-linear-gradient(top, $body-gradient 0%, $black 100%);
+    background: linear-gradient(to bottom, $body-gradient 0%, $black 100%);
+    background-attachment: fixed;
+    background-position: 50% 50%;
+
+    @media (max-width: map-get($grid-breakpoints, lg) - 1) {
+        background-position: 50% calc(50% + 80px);
+    }
+}
+
+@media (max-width: map-get($grid-breakpoints, lg) - 1) {
+    body {
+        @include rem-fallback(padding, 80, 0, 0, 0);
+    }
+}
+
+.slide-in-enter-active {
+    animation: lightSpeedIn 0.75s ease-out;
+}
+
+.slide-in-exit {
+    animation: lightSpeedOut 0.75s ease-in;
+}
+
+.slide-left-enter-active {
+    animation: slideInLeft 0.3s ease-out;
+}
+
+.slide-left-exit {
+    animation: slideOutLeft 0.3s ease-in;
+}
+
+.fade-enter-active {
+    animation: fadeIn 0.5s ease-out;
+}

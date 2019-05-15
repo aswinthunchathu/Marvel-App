@@ -1,0 +1,93 @@
+@import '../../../node_modules/bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../mixins';
+
+$bgColor: rgba(0, 0, 0, 0.9);
+
+.header {
+    @media (max-width: map-get($grid-breakpoints, lg) - 1) {
+        @include rem-fallback(padding-top, 15);
+        @include rem-fallback(padding-bottom, 15);
+        @include rem-fallback(margin-bottom, 15);
+        position: fixed;
+        z-index: 15;
+        top: 0;
+        left: 0;
+        background-color: $bgColor;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .brand-holder {
+        float: right;
+        img {
+            @include rem-fallback(max-height, 50);
+        }
+
+        @media (min-width: map-get($grid-breakpoints, lg)) {
+            display: none;
+        }
+    }
+
+    .hamburger-menu {
+        position: relative;
+        display: inline-block;
+        -webkit-user-select: none;
+        user-select: none;
+
+        @media (min-width: map-get($grid-breakpoints, lg)) {
+            display: none;
+        }
+
+        span {
+            display: block;
+            @include rem-fallback(width, 40);
+            @include rem-fallback(height, 5);
+            @include rem-fallback(margin-bottom, 6);
+            position: relative;
+            background: $gray-500;
+            border-radius: 3px;
+            z-index: 1;
+            @include rem-fallback(transform-origin, 4, 0);
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+                background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+
+            &:first-child {
+                transform-origin: 0% 0%;
+            }
+
+            &:nth-last-child(2) {
+                transform-origin: 0% 100%;
+            }
+        }
+
+        input {
+            display: block;
+            @include rem-fallback(width, 40);
+            @include rem-fallback(height, 32);
+            position: absolute;
+            @include rem-fallback(top, -7);
+            @include rem-fallback(left, -5);
+            cursor: pointer;
+            opacity: 0;
+            z-index: 2;
+            -webkit-touch-callout: none;
+
+            &:checked ~ span {
+                opacity: 1;
+                transform: rotate(-45deg) translate(-1px, 0);
+            }
+
+            &:checked ~ span:nth-last-child(3) {
+                opacity: 0;
+                transform: rotate(0deg) scale(0.2, 0.2);
+            }
+
+            &:checked ~ span:nth-last-child(2) {
+                transform: rotate(45deg) translate(-10px, -11px);
+            }
+        }
+    }
+}

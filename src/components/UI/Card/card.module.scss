@@ -1,0 +1,66 @@
+@import '../../../../node_modules/bootstrap/scss/functions';
+@import '../../../../node_modules/bootstrap/scss/variables';
+@import '../../../mixins';
+
+.card {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 100%;
+    @include rem-fallback(min-height, 200);
+
+    &-floating {
+        overflow: hidden;
+        @include rem-fallback(height, 300);
+
+        @media (min-width: map-get($grid-breakpoints, md)) and (max-width: map-get($grid-breakpoints, lg) - 1) {
+            @include rem-fallback(height, 250);
+        }
+    }
+
+    .card-image {
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .card-content {
+        padding: 4px 8px;
+        @include rem-fallback(padding, 4, 8);
+        box-sizing: border-box;
+        color: $gray-300;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 100%;
+        margin-top: auto;
+        @include rem-fallback(font-size, 14);
+
+        @media (min-width: map-get($grid-breakpoints, lg)) {
+            @include rem-fallback(font-size, 18);
+            @include rem-fallback(padding, 4, 10);
+        }
+    }
+
+    &-floating {
+        .card-content {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 1;
+            bottom: 0;
+            width: 100%;
+        }
+    }
+
+    &:hover {
+        .card-image {
+            transform: scale(1.2);
+        }
+    }
+}

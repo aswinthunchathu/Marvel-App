@@ -1,0 +1,65 @@
+@import '../../../../node_modules/bootstrap/scss/functions';
+@import '../../../../node_modules/bootstrap/scss/variables';
+@import '../../../mixins';
+
+.loader {
+    display: inline-block;
+    position: relative;
+    @include rem-fallback(width, 64);
+    @include rem-fallback(height, 64);
+    z-index: 12;
+
+    div {
+        position: absolute;
+        @include rem-fallback(top, 27);
+        @include rem-fallback(width, 11);
+        @include rem-fallback(height, 11);
+        border-radius: 50%;
+        background: $red;
+        animation-timing-function: cubic-bezier(0, 1, 1, 0);
+
+        &:nth-child(1) {
+            @include rem-fallback(left, 6);
+            animation: loader1 0.6s infinite;
+        }
+
+        &:nth-child(2) {
+            @include rem-fallback(left, 6);
+            animation: loader2 0.6s infinite;
+        }
+
+        &:nth-child(3) {
+            @include rem-fallback(left, 27);
+            animation: loader2 0.6s infinite;
+        }
+        &:nth-child(4) {
+            @include rem-fallback(left, 45);
+            animation: loader3 0.6s infinite;
+        }
+    }
+}
+
+@keyframes loader1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes loader3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes loader2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(19px, 0);
+    }
+}

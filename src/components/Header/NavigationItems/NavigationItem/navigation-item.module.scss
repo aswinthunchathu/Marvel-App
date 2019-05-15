@@ -1,0 +1,54 @@
+@import '../../../../../node_modules/bootstrap/scss/functions';
+@import '../../../../../node_modules/bootstrap/scss/variables';
+@import '../../../../mixins';
+
+.link {
+    padding: 0;
+
+    a {
+        display: block;
+        @include rem-fallback(font-size, 32);
+        color: $gray-500;
+        text-transform: uppercase;
+        font-weight: 600;
+        position: relative;
+        transition: all 0.2s;
+        text-decoration: none;
+        cursor: pointer;
+
+        @media (min-width: map-get($grid-breakpoints, lg)) {
+            @include rem-fallback(padding, 10);
+            @include rem-fallback(margin-bottom, 20);
+
+            .underline {
+                position: absolute;
+                height: 0;
+                width: 75%;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 0;
+                transition: all 0.5s;
+            }
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            text-decoration: none;
+            color: $gray-500;
+        }
+
+        &:hover {
+            color: $gray-300;
+        }
+
+        &.active {
+            color: $red;
+
+            .underline {
+                @include rem-fallback(height, 5);
+                background-color: $red;
+            }
+        }
+    }
+}

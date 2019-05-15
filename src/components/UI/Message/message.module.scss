@@ -1,0 +1,26 @@
+@import '../../../../node_modules/bootstrap/scss/functions';
+@import '../../../../node_modules/bootstrap/scss/variables';
+@import '../../../mixins';
+
+.error {
+    @include rem-fallback(padding, 50);
+    @include rem-fallback(font-size, 40);
+    @include rem-fallback(margin-top, 100);
+    text-align: center;
+    color: $red;
+}
+
+.no-data {
+    @include rem-fallback(padding, 50);
+    @include rem-fallback(font-size, 40);
+    @include rem-fallback(margin-top, 100);
+    text-align: center;
+    color: $gray-500;
+}
+
+.no-more-data {
+    @include rem-fallback(padding, 10);
+    @include rem-fallback(font-size, 22);
+    text-align: center;
+    color: $gray-500;
+}

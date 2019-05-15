@@ -1,0 +1,29 @@
+@import '../../../../node_modules/bootstrap/scss/functions';
+@import '../../../../node_modules/bootstrap/scss/variables';
+@import '../../../mixins';
+
+.pill {
+    position: fixed;
+    @include rem-fallback(bottom, 30);
+    @include rem-fallback(padding, 0, 20);
+    z-index: 11;
+    width: 100%;
+    text-align: center;
+    left: 0;
+
+    @media (min-width: map-get($grid-breakpoints, lg)) {
+        text-align: right;
+    }
+
+    div {
+        display: inline-block;
+        background-color: rgba(240, 20, 30, 0.8);
+        color: $white;
+        @include rem-fallback(min-width, 300);
+        @include rem-fallback(padding, 5, 5, 2, 5);
+        @include rem-fallback(border-radius, 20);
+        @include rem-fallback(font-size, 22);
+        text-align: center;
+        box-shadow: 3px 3px 4px #333;
+    }
+}

@@ -1,0 +1,16 @@
+.layout {
+    box-sizing: border-box;
+    position: relative;
+
+    .main {
+        position: relative;
+    }
+
+    @media (min-width: 992px) {
+        padding-left: 250px;
+    }
+
+    @media (min-width: 1200px) {
+        padding-left: 20%;
+    }
+}
