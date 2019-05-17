@@ -1,3 +1,13 @@
+/*
+    This is a dump component which renders an image
+    @props{
+        src: string
+        alt: string
+        className: string (optional)
+        placeholder: string (optional)
+    }
+*/
+
 import React, { Component } from 'react'
 import style from './image.module.scss'
 import { IProps } from './type'

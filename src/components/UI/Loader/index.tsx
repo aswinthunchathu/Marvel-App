@@ -1,3 +1,7 @@
+/*
+    This is a dump component which renders a loading component
+*/
+
 import React, { FC } from 'react'
 import style from './loader.module.scss'
 

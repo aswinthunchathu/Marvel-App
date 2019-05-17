@@ -1,3 +1,12 @@
+/*
+    This is a dump component which renders tab view
+    @props{
+        id: string
+        defaultActiveKey: string -- active tab by default
+        tabs: ITab[] -- array of tab data
+    }
+*/
+
 import React, { FC, Suspense } from 'react'
 import { Tab, TabContainer, Tabs } from 'react-bootstrap'
 import qs from 'qs'

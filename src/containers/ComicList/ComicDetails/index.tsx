@@ -1,3 +1,7 @@
+/*
+    This is a container component which displays details about a comic.
+*/
+
 import React, { FC, lazy } from 'react'
 import { Query } from 'react-apollo'
 
@@ -11,7 +15,7 @@ import Comic from '../../../components/CardList/CardDetails'
 import ErrorBoundary from '../../../hoc/ErrorHandler'
 import WithLoading from '../../../hoc/WithLoading'
 
-import { ENUM_FILTER } from '../../CharacterList/enum'
+import { ENUM_FILTER } from '../../CharacterList'
 
 const Characters = lazy(() => import('../../CharacterList'))
 

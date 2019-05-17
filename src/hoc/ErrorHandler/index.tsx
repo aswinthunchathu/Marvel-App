@@ -1,3 +1,13 @@
+/*
+    This is an higher order component to catch generic errors in child components
+    @state {
+        hasError: boolean 
+    }
+    @props{
+        error: any
+        children: ReactNode
+    }
+*/
 import React, { Component } from 'react'
 
 import { IProps } from './type'

@@ -1,3 +1,11 @@
+/*
+    This is an higher order component to build the app layout
+    @props{
+        children: ReactNode
+}
+    }
+*/
+
 import React, { FC } from 'react'
 
 import Header from '../../components/Header'

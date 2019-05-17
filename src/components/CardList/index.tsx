@@ -1,3 +1,13 @@
+/*
+    This is a dump component which shows list of cards for the given input array
+    @props{
+        data: ICardData[] (optional)
+        loadData: () => void -- load next set of data for infinite scrolling
+        loading: boolean
+        pagination: IPagination
+        noSpace: boolean (optional) -- if true, renders cards without space in between
+    }
+*/
 import React, { FC } from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { Link } from 'react-router-dom'

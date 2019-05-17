@@ -1,3 +1,10 @@
+/*
+    This is a dump component which renders app sidebar
+    @props{
+        click: function (optional) -- function that controls hide or show sidebar in mobile view
+    }
+*/
+
 import React, { FC, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 

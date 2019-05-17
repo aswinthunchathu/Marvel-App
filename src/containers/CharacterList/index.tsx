@@ -1,14 +1,22 @@
+/*
+    This is a container component which displays list of characters.
+    @props{
+        @withSpace: boolean (optional) -- if true, each tile will be rendered without any space in between
+        @filter: IFilter (optional) -- when provided, list will be filtered by the given filter 
+    }
+*/
+
 import React, { FC } from 'react'
 import { Query } from 'react-apollo'
 
-import { CHARACTERS_LIMIT } from '../../shared/constants'
-import { IVariables, IProps } from './types'
+import { CHARACTERS_LIMIT, CHARACTERS_URL } from '../../shared/constants'
 import { getPageData, isMobile, getUpdatedPage } from '../../shared/util'
+import { IData } from '../../shared/types'
+import { IVariables, IProps } from './types'
+import { FILTER_TYPE, ENUM_FILTER } from './enum'
 
 import ErrorBoundary from '../../hoc/ErrorHandler'
 import Characters from '../../components/CardList'
-import { IData } from '../../shared/types'
-import { FILTER_TYPE, ENUM_FILTER } from './enum'
 
 const characterList: FC<IProps> = props => {
     let query = FILTER_TYPE.get(ENUM_FILTER.DEFAULT)
@@ -26,8 +34,8 @@ const characterList: FC<IProps> = props => {
             {({ loading, error, data, fetchMore }) => {
                 const { pagination, data: generatedData } =
                     props.withSpace || isMobile()
-                        ? getPageData('/characters', CHARACTERS_LIMIT, data)
-                        : getPageData('/characters', CHARACTERS_LIMIT, data, '')
+                        ? getPageData(CHARACTERS_URL, CHARACTERS_LIMIT, data)
+                        : getPageData(CHARACTERS_URL, CHARACTERS_LIMIT, data, '')
 
                 return (
                     <ErrorBoundary error={error}>
@@ -54,4 +62,4 @@ const characterList: FC<IProps> = props => {
     )
 }
 
-export default characterList
+export { characterList as default, ENUM_FILTER }

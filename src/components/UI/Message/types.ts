@@ -1,5 +1,5 @@
-import { MESSAGE_TYPES } from '.'
+import { MESSAGE_TYPES } from './enum'
 
 export interface IProps {
-    type: string
+    type: MESSAGE_TYPES
 }

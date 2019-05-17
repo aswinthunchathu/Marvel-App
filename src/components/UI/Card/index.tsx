@@ -1,3 +1,14 @@
+/*
+    This is a dump component which renders a card view
+    @props{
+        image: string
+        alt: string
+        text: string
+        floatingLabel: boolean (optional)
+        placeholderImage: string (optional)
+    }
+*/
+
 import React, { FC } from 'react'
 
 import style from './card.module.scss'

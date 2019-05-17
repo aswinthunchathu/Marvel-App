@@ -1,3 +1,10 @@
+/*
+    This is a dump component which renders app header
+    @state{
+        open: boolean -- controls opening and closing of side menu in mobile views
+    }
+*/
+
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
@@ -8,10 +15,7 @@ import logo from '../../assets/images/logo-mobile.png'
 import Sidebar from './Sidebar'
 import NavigationItems from './NavigationItems'
 import { isMobile } from '../../shared/util'
-
-interface IState {
-    open: boolean
-}
+import { IState } from './types'
 
 class Header extends Component<{}, IState> {
     isMobile: boolean = false

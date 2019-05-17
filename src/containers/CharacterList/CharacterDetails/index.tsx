@@ -1,3 +1,7 @@
+/*
+    This is a container component which displays details about a character.
+*/
+
 import React, { FC, lazy } from 'react'
 import { Query } from 'react-apollo'
 
@@ -10,8 +14,8 @@ import Character from '../../../components/CardList/CardDetails'
 import ErrorBoundary from '../../../hoc/ErrorHandler'
 import WithLoading from '../../../hoc/WithLoading'
 import { ITab } from '../../../components/Tabs/types'
-import { ENUM_FILTER as COMIC_FILTER_TYPE } from '../../ComicList/enum'
-import { ENUM_FILTER as SERIES_FILTER_TYPE } from '../../SeriesList/enum'
+import { ENUM_FILTER as COMIC_FILTER_TYPE } from '../../ComicList'
+import { ENUM_FILTER as SERIES_FILTER_TYPE } from '../../SeriesList'
 
 const Comics = lazy(() => import('../../ComicList'))
 const Series = lazy(() => import('../../SeriesList'))

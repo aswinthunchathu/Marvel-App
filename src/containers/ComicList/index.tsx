@@ -1,15 +1,21 @@
+/*
+    This is a container component which displays list of comics.
+    @props{
+        @filter: IFilter (optional) -- when provided, list will be filtered by the given filter 
+    }
+*/
+
 import React, { FC } from 'react'
 import { Query } from 'react-apollo'
 
-import { IVariables, IProps } from './types'
 import { getPageData, getUpdatedPage } from '../../shared/util'
-
-import { COMICS_LIMIT } from '../../shared/constants'
+import { COMICS_LIMIT, COMICS_URL } from '../../shared/constants'
+import { IData } from '../../shared/types'
+import { IVariables, IProps } from './types'
+import { ENUM_FILTER, FILTER_TYPE } from './enum'
 
 import Comics from '../../components/CardList'
 import ErrorBoundary from '../../hoc/ErrorHandler'
-import { IData } from '../../shared/types'
-import { ENUM_FILTER, FILTER_TYPE } from './enum'
 
 const comicList: FC<IProps> = props => {
     let query = FILTER_TYPE.get(ENUM_FILTER.DEFAULT)
@@ -25,7 +31,7 @@ const comicList: FC<IProps> = props => {
     return (
         <Query<IData, IVariables> query={query} variables={variables}>
             {({ loading, error, data, fetchMore }) => {
-                const { pagination, data: generatedData } = getPageData('/comics', COMICS_LIMIT, data)
+                const { pagination, data: generatedData } = getPageData(COMICS_URL, COMICS_LIMIT, data)
 
                 return (
                     <ErrorBoundary error={error}>
@@ -51,4 +57,4 @@ const comicList: FC<IProps> = props => {
     )
 }
 
-export default comicList
+export { comicList as default, ENUM_FILTER }

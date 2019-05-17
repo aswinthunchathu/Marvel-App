@@ -10,7 +10,7 @@ export interface ICardData {
 
 export interface IProps {
     data?: ICardData[]
-    loadData: any
+    loadData: () => void
     loading: boolean
     pagination: IPagination
     noSpace?: boolean

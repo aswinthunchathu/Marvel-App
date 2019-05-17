@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { IPagination } from '../../shared/types'
 
 export interface IProps {
-    loadData: any
+    loadData: () => void
     data: any[]
     pagination: IPagination
     children: ReactNode

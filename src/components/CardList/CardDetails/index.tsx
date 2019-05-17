@@ -1,3 +1,11 @@
+/*
+    This is a dump component which shows details about the selected card
+    @props{
+        data: ICardDetails (optional)
+        showAsBackgroundImage: boolean -- if true, renders the given image as background image
+    }
+*/
+
 import React, { FC } from 'react'
 import { Jumbotron } from 'react-bootstrap'
 

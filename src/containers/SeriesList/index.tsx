@@ -1,15 +1,21 @@
+/*
+    This is a container component which displays list of series.
+    @props{
+        @filter: IFilter (optional) -- when provided, list will be filtered by the given filter 
+    }
+*/
+
 import React, { FC } from 'react'
 import { Query } from 'react-apollo'
 
-import { IVariables, IProps } from './types'
 import { getPageData, getUpdatedPage } from '../../shared/util'
-
-import { SERIES_LIMIT } from '../../shared/constants'
+import { SERIES_LIMIT, SERIES_URL } from '../../shared/constants'
+import { IData } from '../../shared/types'
+import { IVariables, IProps } from './types'
+import { FILTER_TYPE, ENUM_FILTER } from './enum'
 
 import Series from '../../components/CardList'
 import ErrorBoundary from '../../hoc/ErrorHandler'
-import { IData } from '../../shared/types'
-import { FILTER_TYPE, ENUM_FILTER } from './enum'
 
 const seriesList: FC<IProps> = props => {
     let query = FILTER_TYPE.get(ENUM_FILTER.DEFAULT)
@@ -25,7 +31,7 @@ const seriesList: FC<IProps> = props => {
     return (
         <Query<IData, IVariables> query={query} variables={variables}>
             {({ loading, error, data, fetchMore }) => {
-                const { pagination, data: generatedData } = getPageData('/series', SERIES_LIMIT, data)
+                const { pagination, data: generatedData } = getPageData(SERIES_URL, SERIES_LIMIT, data)
 
                 return (
                     <ErrorBoundary error={error}>
@@ -51,4 +57,4 @@ const seriesList: FC<IProps> = props => {
     )
 }
 
-export default seriesList
+export { seriesList as default, ENUM_FILTER }

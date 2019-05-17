@@ -1,3 +1,18 @@
+/*
+    This is an higher order component to add scroll to load more feature to the wrapped component
+    @state {
+        showPill: boolean -- shows number of items loaded
+    }
+    @props{
+        loadData: function -- to load more data
+        data: any[] -- data loaded
+        pagination: IPagination
+        children: ReactNode
+        loading: boolean
+}
+    }
+*/
+
 import React, { Component, Fragment } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { CSSTransition } from 'react-transition-group'

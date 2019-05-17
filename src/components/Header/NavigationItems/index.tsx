@@ -1,3 +1,10 @@
+/*
+    This is a dump component which renders app navigation links
+    @props{
+        onLinkClick: function (optional) -- function that controls hide or show sidebar in mobile view
+    }
+*/
+
 import React, { FC } from 'react'
 import style from './navigation-items.module.scss'
 
