@@ -57,4 +57,5 @@ const seriesList: FC<IProps> = props => {
     )
 }
 
+export type ISeriesList = IProps
 export { seriesList as default, ENUM_FILTER }

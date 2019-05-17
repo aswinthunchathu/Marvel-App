@@ -12,9 +12,7 @@ import { Tab, TabContainer, Tabs } from 'react-bootstrap'
 import qs from 'qs'
 
 import './tabs.scss'
-
-import { IProps } from './types'
-
+import { IProps, ITab } from './types'
 import Loader from '../UI/Loader'
 
 const tabs: FC<IProps> = props => {
@@ -46,4 +44,5 @@ const tabs: FC<IProps> = props => {
     )
 }
 
+export type ITabProps = ITab
 export default tabs

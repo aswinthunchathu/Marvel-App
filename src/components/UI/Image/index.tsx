@@ -49,4 +49,5 @@ class Image extends Component<IProps> {
     }
 }
 
+export type IImage = IProps
 export default Image

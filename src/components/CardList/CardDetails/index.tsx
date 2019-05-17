@@ -9,7 +9,7 @@
 import React, { FC } from 'react'
 import { Jumbotron } from 'react-bootstrap'
 
-import { IProps } from './types'
+import { IProps, ICardDetails } from './types'
 import style from './card-details.module.scss'
 
 import Message, { MESSAGE_TYPES } from '../../UI/Message'
@@ -75,4 +75,6 @@ const cardDetails: FC<IProps> = props => {
     )
 }
 
+export type ICardDetails = ICardDetails
+export type ICardData = IProps
 export default cardDetails

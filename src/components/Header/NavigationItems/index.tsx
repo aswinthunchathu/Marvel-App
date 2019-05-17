@@ -27,4 +27,5 @@ const navigationItems: FC<IProps> = props => {
     )
 }
 
+export type INavigationItems = IProps
 export default navigationItems

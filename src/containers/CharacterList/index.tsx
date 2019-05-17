@@ -62,4 +62,6 @@ const characterList: FC<IProps> = props => {
     )
 }
 
+export type ICharacterListProps = IProps
+
 export { characterList as default, ENUM_FILTER }

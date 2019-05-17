@@ -27,4 +27,5 @@ const sidebar: FC<IProps> = props => {
     )
 }
 
+export type ISidebar = IProps
 export default sidebar

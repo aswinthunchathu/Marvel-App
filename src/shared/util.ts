@@ -1,5 +1,6 @@
 import { ICharacter, IComic, ISeries, IPagination, IData } from './types'
-import { ICardData } from '../components/CardList/types'
+import { ICardData } from '../components/CardList'
+import { ICardDetails } from '../components/CardList/CardDetails'
 
 /*
     This class is used for instantiating pagination
@@ -96,6 +97,27 @@ export const getUpdatedPage = (prev: IData, next?: IData) => {
             results: [...prev.container.results, ...next.container.results],
         },
     }
+}
+
+/*
+    This function converts data of type IData to ICardDetails
+    @params data: ICharacter or IComic or ISeries Array
+*/
+export const getCardDetailsData = (data?: IData) => {
+    let updatedData: ICardDetails | undefined = undefined
+
+    if (data && data.container && data.container.results && data.container.results.length > 0) {
+        updatedData = {
+            id: data.container.results[0].id,
+            text: data.container.results[0].title,
+            image: `${data.container.results[0].thumbnail.path}/portrait_incredible.${
+                data.container.results[0].thumbnail.extension
+            }`,
+            description: data.container.results[0].description,
+        }
+    }
+
+    return updatedData
 }
 
 /*

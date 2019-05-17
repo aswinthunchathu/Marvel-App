@@ -11,8 +11,9 @@ import { IProps } from './types'
 import style from './message.module.scss'
 import { MESSAGE_TYPES } from './enum'
 
-const error: FC<IProps> = props => {
+const message: FC<IProps> = props => {
     return <div className={style[props.type]}>{props.children}</div>
 }
 
-export { error as default, MESSAGE_TYPES }
+export type IMessage = IProps
+export { message as default, MESSAGE_TYPES }

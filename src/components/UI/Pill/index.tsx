@@ -18,4 +18,5 @@ const pill: FC<IProps> = props => {
     )
 }
 
+export type IPill = IProps
 export default pill

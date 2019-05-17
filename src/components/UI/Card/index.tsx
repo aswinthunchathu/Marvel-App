@@ -48,4 +48,5 @@ const card: FC<IProps> = props => {
     )
 }
 
+export type ICard = IProps
 export default card

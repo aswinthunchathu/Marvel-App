@@ -57,4 +57,5 @@ const comicList: FC<IProps> = props => {
     )
 }
 
+export type IComicList = IProps
 export { comicList as default, ENUM_FILTER }

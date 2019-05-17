@@ -12,7 +12,7 @@ import React, { FC } from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { Link } from 'react-router-dom'
 
-import { IProps } from './types'
+import { IProps, ICardData } from './types'
 
 import Card from '../UI/Card'
 import InfinityScroller from '../../hoc/InfinityScroller'
@@ -80,4 +80,6 @@ const cardList: FC<IProps> = props => {
     )
 }
 
+export type ICardData = ICardData
+export type ICardList = IProps
 export default cardList
