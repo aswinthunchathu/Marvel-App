@@ -1,10 +1,3 @@
-export interface IResult {
-    offset: number
-    limit: number
-    total: number
-    count: number
-}
-
 export interface IItem {
     name?: string
     role?: string
@@ -62,32 +55,16 @@ export interface ISeries {
     characters: IItems[]
 }
 
-export interface ILoadData {
-    (page: number): void
-}
-
-export interface ICharacters extends IResult {
+export interface ICharacters extends IPagination {
     results: ICharacter[]
 }
 
-export interface IComics extends IResult {
+export interface IComics extends IPagination {
     results: IComic[]
 }
 
-export interface ISeriesList extends IResult {
+export interface ISeriesList extends IPagination {
     results: ISeries[]
-}
-
-export interface IResponseCharacters {
-    data: {
-        characters: ICharacters
-    }
-}
-
-export interface IResponseComics {
-    data: {
-        comics: IComics
-    }
 }
 
 export interface IData {

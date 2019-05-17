@@ -1,5 +1,10 @@
 import { gql } from 'apollo-boost'
 
+/*
+    Graphql query to fetch all characters ordered by modified date in desc
+    @params offset: number
+    @params limit: number
+*/
 export const FETCH_CHARACTERS = gql`
     query fetchCharacters($offset: Int!, $limit: Int!) {
         container(offset: $offset, limit: $limit, orderBy: "-modified")
@@ -20,6 +25,10 @@ export const FETCH_CHARACTERS = gql`
     }
 `
 
+/*
+    Graphql query to fetch character by id
+    @params characterId: ID (graphql type)
+*/
 export const FETCH_CHARACTER_BY_ID = gql`
     query fetchCharacterById($characterId: ID!) {
         container(characterId: $characterId)
@@ -36,6 +45,12 @@ export const FETCH_CHARACTER_BY_ID = gql`
     }
 `
 
+/*
+    Graphql query to fetch all comics filtered by character id and ordered by modified date in desc
+    @params filterId: ID (graphql type)
+    @params offset: number
+    @params limit: number
+*/
 export const FETCH_COMICS_BY_CHARACTER_ID = gql`
     query fetchComicsByCharacter($filterId: ID!, $offset: Int!, $limit: Int!) {
         container(characterId: $filterId, offset: $offset, limit: $limit, orderBy: "-modified")
@@ -56,6 +71,12 @@ export const FETCH_COMICS_BY_CHARACTER_ID = gql`
     }
 `
 
+/*
+    Graphql query to fetch all series filtered by character id and ordered by modified date in desc
+    @params filterId: ID (graphql type)
+    @params offset: number
+    @params limit: number
+*/
 export const FETCH_SERIES_BY_CHARACTER_ID = gql`
     query fetchSeriesByCharacterID($filterId: ID!, $offset: Int!, $limit: Int!) {
         container(characterId: $filterId, offset: $offset, limit: $limit, orderBy: "-modified")
@@ -76,6 +97,11 @@ export const FETCH_SERIES_BY_CHARACTER_ID = gql`
     }
 `
 
+/*
+    Graphql query to fetch all comics ordered by modified date in desc
+    @params offset: number
+    @params limit: number
+*/
 export const FETCH_COMICS = gql`
     query fetchComics($offset: Int!, $limit: Int!) {
         container(offset: $offset, limit: $limit, orderBy: "-modified")
@@ -96,6 +122,10 @@ export const FETCH_COMICS = gql`
     }
 `
 
+/*
+    Graphql query to fetch comic by id
+    @params comicId: ID (graphql type)
+*/
 export const FETCH_COMIC_BY_ID = gql`
     query fetchComicById($comicId: ID!) {
         container(comicId: $comicId) @rest(type: "type_comics_by_id", path: "/comics/{args.comicId}") {
@@ -111,6 +141,12 @@ export const FETCH_COMIC_BY_ID = gql`
     }
 `
 
+/*
+    Graphql query to fetch all characters filtered by comic id and ordered by modified date in desc
+    @params filterId: ID (graphql type)
+    @params offset: number
+    @params limit: number
+*/
 export const FETCH_CHARACTERS_BY_COMIC_ID = gql`
     query fetchCharactersByComic($filterId: ID!, $offset: Int!, $limit: Int!) {
         container(comicId: $filterId, offset: $offset, limit: $limit, orderBy: "-modified")
@@ -131,6 +167,11 @@ export const FETCH_CHARACTERS_BY_COMIC_ID = gql`
     }
 `
 
+/*
+    Graphql query to fetch all series ordered by modified date in desc
+    @params offset: number
+    @params limit: number
+*/
 export const FETCH_SERIES = gql`
     query fetchSeries($offset: Int!, $limit: Int!) {
         container(offset: $offset, limit: $limit, orderBy: "-modified")
@@ -151,6 +192,10 @@ export const FETCH_SERIES = gql`
     }
 `
 
+/*
+    Graphql query to fetch series by id
+    @params seriesId: ID (graphql type)
+*/
 export const FETCH_SERIES_BY_ID = gql`
     query fetchSeriesById($seriesId: ID!) {
         container(seriesId: $seriesId) @rest(type: "type_series_by_id", path: "/series/{args.seriesId}") {
@@ -166,6 +211,12 @@ export const FETCH_SERIES_BY_ID = gql`
     }
 `
 
+/*
+    Graphql query to fetch all characters filtered by series id and ordered by modified date in desc
+    @params filterId: ID (graphql type)
+    @params offset: number
+    @params limit: number
+*/
 export const FETCH_CHARACTERS_BY_SERIES_ID = gql`
     query fetchCharactersBySeries($filterId: ID!, $offset: Int!, $limit: Int!) {
         container(seriesId: $filterId, offset: $offset, limit: $limit, orderBy: "-modified")
@@ -186,6 +237,12 @@ export const FETCH_CHARACTERS_BY_SERIES_ID = gql`
     }
 `
 
+/*
+    Graphql query to fetch all comics filtered by series id and ordered by modified date in desc
+    @params filterId: ID (graphql type)
+    @params offset: number
+    @params limit: number
+*/
 export const FETCH_COMICS_BY_SERIES_ID = gql`
     query fetchComicsBySeries($filterId: ID!, $offset: Int!, $limit: Int!) {
         container(seriesId: $filterId, offset: $offset, limit: $limit, orderBy: "-modified")
