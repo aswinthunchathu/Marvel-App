@@ -53,21 +53,31 @@ class InfinityScroller extends Component<IProps, IState> {
     }
 
     render() {
+        const hasMore = this.props.pagination.total > this.props.data.length
+
         return (
             <Fragment>
                 <InfiniteScroll
                     dataLength={this.props.data.length}
                     next={this.props.loadData}
-                    hasMore={this.props.loading || this.props.pagination.total > this.props.data.length}
+                    hasMore={this.props.loading || hasMore}
                     loader={<Loader />}
                     endMessage={<Message type={MESSAGE_TYPES.NO_MORE_DATA}>{NO_MORE_DATA}</Message>}
                 >
                     {this.props.children}
                 </InfiniteScroll>
 
-                <CSSTransition mountOnEnter unmountOnExit in={this.state.showPill} timeout={750} classNames="slide-in">
-                    <Pill text={`Showing ${this.props.data.length} of ${this.props.pagination.total}`} key="pill" />
-                </CSSTransition>
+                {hasMore && (
+                    <CSSTransition
+                        mountOnEnter
+                        unmountOnExit
+                        in={this.state.showPill}
+                        timeout={750}
+                        classNames="slide-in"
+                    >
+                        <Pill text={`Showing ${this.props.data.length} of ${this.props.pagination.total}`} key="pill" />
+                    </CSSTransition>
+                )}
             </Fragment>
         )
     }

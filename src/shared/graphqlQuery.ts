@@ -6,8 +6,8 @@ import { gql } from 'apollo-boost'
     @params limit: number
 */
 export const FETCH_CHARACTERS = gql`
-    query fetchCharacters($offset: Int!, $limit: Int!) {
-        container(offset: $offset, limit: $limit, orderBy: "-modified")
+    query fetchCharacters($offset: Int!, $limit: Int!, $search: String) {
+        container(offset: $offset, limit: $limit, orderBy: "-modified", nameStartsWith: $search)
             @rest(type: "type_characters", path: "/characters?{args}") {
             total
             offset

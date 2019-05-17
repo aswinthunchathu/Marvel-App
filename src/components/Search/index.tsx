@@ -28,6 +28,7 @@ class Search extends Component<IProps, IState> {
                 isSearched: true,
                 key,
             })
+            event.target.elements.txtSearch.value = ''
         }
     }
 

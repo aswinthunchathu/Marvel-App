@@ -24,6 +24,7 @@ const characterList: FC<IProps> = props => {
         offset: 0,
         limit: CHARACTERS_LIMIT,
     }
+
     if (props.filter) {
         query = FILTER_TYPE.get(props.filter.type)
         variables.filterId = props.filter.value
