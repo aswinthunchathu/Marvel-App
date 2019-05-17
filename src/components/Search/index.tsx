@@ -7,38 +7,62 @@
     }
 */
 
-import React, { FC } from 'react'
+import React, { Component, Fragment } from 'react'
+import { Redirect } from 'react-router-dom'
 import { Form, InputGroup, Button } from 'react-bootstrap'
 
 import style from './search.module.scss'
-import { IProps } from './types'
+import { IProps, IState } from './types'
 
-const search: FC<IProps> = props => {
-    const css = [style['search'], props.className]
-
-    const submit = (event: any) => {
-        event.preventDefault()
-        const searchKey = event.target.elements.txtSearch.value
-        console.log(searchKey)
+class Search extends Component<IProps, IState> {
+    state = {
+        isSearched: false,
+        key: '',
     }
 
-    return (
-        <Form className={css.join(' ')} onSubmit={submit}>
-            <Form.Group controlId="app-search" className="m-0">
-                <InputGroup className="mb-3">
-                    <Form.Control size="lg" type="text" name="txtSearch" />
-                    <InputGroup.Append>
-                        <Button variant="outline-secondary" type="submit">
-                            <div className={style['search-icon']}>
-                                <div className={style['search-icon__circle']} />
-                                <div className={style['search-icon__rectangle']} />
-                            </div>
-                        </Button>
-                    </InputGroup.Append>
-                </InputGroup>
-            </Form.Group>
-        </Form>
-    )
+    onSubmit = (event: any) => {
+        event.preventDefault()
+        const key = event.target.elements.txtSearch.value
+        if (key !== '') {
+            this.setState({
+                isSearched: true,
+                key,
+            })
+        }
+    }
+
+    componentDidUpdate(__: any, prevState: IState) {
+        if (!prevState.isSearched && this.state.isSearched) {
+            this.setState({
+                isSearched: false,
+            })
+        }
+    }
+
+    render() {
+        const css = [style['search'], this.props.className]
+
+        return (
+            <Fragment>
+                <Form className={css.join(' ')} onSubmit={this.onSubmit}>
+                    <Form.Group controlId="app-search" className="m-0">
+                        <InputGroup className="mb-3">
+                            <Form.Control size="lg" type="text" name="txtSearch" />
+                            <InputGroup.Append>
+                                <Button variant="outline-secondary" type="submit">
+                                    <div className={style['search-icon']}>
+                                        <div className={style['search-icon__circle']} />
+                                        <div className={style['search-icon__rectangle']} />
+                                    </div>
+                                </Button>
+                            </InputGroup.Append>
+                        </InputGroup>
+                    </Form.Group>
+                </Form>
+                {this.state.isSearched && <Redirect to={`${this.props.redirectTo}?key=${this.state.key}`} />}
+            </Fragment>
+        )
+    }
 }
 
-export default search
+export default Search

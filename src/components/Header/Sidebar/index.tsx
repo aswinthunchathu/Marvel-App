@@ -24,7 +24,7 @@ const sidebar: FC<IProps> = props => {
                 </Link>
                 {props.children}
                 <div className="mt-auto">
-                    {!isMobile() && <Search className="mb-5" />}
+                    {!isMobile() && <Search className="mb-5" redirectTo="/search" />}
                     <div className={style['copy-write-mark']}>Data provided by Marvel. © 2014 Marvel</div>
                 </div>
             </div>
