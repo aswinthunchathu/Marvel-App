@@ -1,14 +1,17 @@
-import { ICharacters } from '../../shared/types'
+import { ENUM_FILTER } from './enum'
+
+export interface IFilter {
+    type: ENUM_FILTER
+    value: string
+}
 
 export interface IProps {
-    comicId?: string
-    seriesId?: string
     withSpace?: boolean
+    filter?: IFilter
 }
 
 export interface IVariables {
     offset: number
     limit: number
-    comicId?: string
-    seriesId?: string
+    filterId?: string
 }

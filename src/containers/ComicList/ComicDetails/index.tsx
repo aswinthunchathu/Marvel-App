@@ -11,6 +11,8 @@ import Comic from '../../../components/CardList/CardDetails'
 import ErrorBoundary from '../../../hoc/ErrorHandler'
 import WithLoading from '../../../hoc/WithLoading'
 
+import { ENUM_FILTER } from '../../CharacterList/enum'
+
 const Characters = lazy(() => import('../../CharacterList'))
 
 const characterDetails: FC<IProps> = props => {
@@ -42,7 +44,9 @@ const characterDetails: FC<IProps> = props => {
                     {
                         key: defaultTab,
                         title: 'Characters',
-                        component: <Characters comicId={comicId} withSpace={true} />,
+                        component: (
+                            <Characters filter={{ type: ENUM_FILTER.COMIC_ID, value: comicId }} withSpace={true} />
+                        ),
                     },
                 ]
 

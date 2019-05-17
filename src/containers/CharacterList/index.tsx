@@ -5,28 +5,20 @@ import { CHARACTERS_LIMIT } from '../../shared/constants'
 import { IVariables, IProps } from './types'
 import { getPageData, isMobile, getUpdatedPage } from '../../shared/util'
 
-import {
-    FETCH_CHARACTERS,
-    FETCH_CHARACTERS_BY_COMIC_ID,
-    FETCH_CHARACTERS_BY_SERIES_ID,
-} from '../../shared/graphqlQuery'
-
 import ErrorBoundary from '../../hoc/ErrorHandler'
 import Characters from '../../components/CardList'
 import { IData } from '../../shared/types'
+import { FILTER_TYPE, ENUM_FILTER } from './enum'
 
 const characterList: FC<IProps> = props => {
-    let query = FETCH_CHARACTERS
+    let query = FILTER_TYPE.get(ENUM_FILTER.DEFAULT)
     const variables: IVariables = {
         offset: 0,
         limit: CHARACTERS_LIMIT,
     }
-    if (props.comicId) {
-        query = FETCH_CHARACTERS_BY_COMIC_ID
-        variables.comicId = props.comicId
-    } else if (props.seriesId) {
-        query = FETCH_CHARACTERS_BY_SERIES_ID
-        variables.seriesId = props.seriesId
+    if (props.filter) {
+        query = FILTER_TYPE.get(props.filter.type)
+        variables.filterId = props.filter.value
     }
 
     return (

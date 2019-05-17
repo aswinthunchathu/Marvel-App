@@ -1,13 +1,16 @@
-import { IComics } from '../../shared/types'
+import { ENUM_FILTER } from './enum'
+
+export interface IFilter {
+    type: ENUM_FILTER
+    value: string
+}
 
 export interface IProps {
-    characterId?: string
-    seriesId?: string
+    filter?: IFilter
 }
 
 export interface IVariables {
     offset?: number
     limit?: number
-    characterId?: string
-    seriesId?: string
+    filterId?: string
 }

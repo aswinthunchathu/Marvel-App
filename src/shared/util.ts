@@ -1,6 +1,10 @@
 import { ICharacter, IComic, ISeries, IPagination, IData } from './types'
 import { ICardData } from '../components/CardList/types'
 
+/*
+    This class is used for instantiating pagination
+    @params limit: number -- set the number of records per page
+*/
 class Pagination implements IPagination {
     limit = 0
     total = 0
@@ -12,6 +16,14 @@ class Pagination implements IPagination {
     }
 }
 
+/*
+    This function converts input data to card component compatible data 
+    @params data: ICharacter or IComic or ISeries Array
+    @params link: string -- This sets to which route the card should redirect
+    @imageType data: string -- This specifies which quality image to be used for actual image
+    @placeholderImageType data: string -- This specifies which quality image to be used as placeholder
+    returns : ICardData Array
+*/
 export const generateCardData = (
     data: (ICharacter | IComic | ISeries)[],
     link: string,
@@ -28,6 +40,18 @@ export const generateCardData = (
         })
     )
 
+/*
+    This function set pagination and fetch format the fetched data for the first time load 
+    @params link: string -- This sets to which route the card should redirect
+    @params data: ICharacter or IComic or ISeries Array
+    @params limit: number -- number of records per page
+    @imageType data: string -- This specifies which quality image to be used for actual image
+    @placeholderImageType data: string -- This specifies which quality image to be used as placeholder
+    returns {
+        type of Pagination,
+        ICardData[]
+    }
+*/
 export const getPageData = (
     link: string,
     limit: number,
@@ -37,6 +61,7 @@ export const getPageData = (
 ) => {
     const pagination = new Pagination(limit)
     let generatedData: ICardData[] = []
+
     if (data && data.container) {
         pagination.count = data.container.count
         pagination.total = data.container.total
@@ -54,6 +79,12 @@ export const getPageData = (
     }
 }
 
+/*
+    This function is used to merge existing data with the newly fetched data for infinity scrolling
+    @params prev: IData -- previous data
+    @params next: IData -- new data
+    returns IData -- prev + next data
+*/
 export const getUpdatedPage = (prev: IData, next?: IData) => {
     if (!next) {
         return prev
@@ -67,4 +98,8 @@ export const getUpdatedPage = (prev: IData, next?: IData) => {
     }
 }
 
+/*
+    This function checks if the device is mobile or not
+    returns boolean
+*/
 export const isMobile = () => window.outerWidth < 992

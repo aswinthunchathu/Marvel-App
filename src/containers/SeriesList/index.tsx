@@ -5,22 +5,21 @@ import { IVariables, IProps } from './types'
 import { getPageData, getUpdatedPage } from '../../shared/util'
 
 import { SERIES_LIMIT } from '../../shared/constants'
-import { FETCH_SERIES, FETCH_SERIES_BY_CHARACTER_ID } from '../../shared/graphqlQuery'
 
 import Series from '../../components/CardList'
 import ErrorBoundary from '../../hoc/ErrorHandler'
 import { IData } from '../../shared/types'
+import { FILTER_TYPE, ENUM_FILTER } from './enum'
 
 const seriesList: FC<IProps> = props => {
-    let query = FETCH_SERIES
+    let query = FILTER_TYPE.get(ENUM_FILTER.DEFAULT)
     const variables: IVariables = {
         offset: 0,
         limit: SERIES_LIMIT,
     }
-
-    if (props.characterId) {
-        query = FETCH_SERIES_BY_CHARACTER_ID
-        variables.characterId = props.characterId
+    if (props.filter) {
+        query = FILTER_TYPE.get(props.filter.type)
+        variables.filterId = props.filter.value
     }
 
     return (

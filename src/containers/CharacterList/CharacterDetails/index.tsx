@@ -10,6 +10,8 @@ import Character from '../../../components/CardList/CardDetails'
 import ErrorBoundary from '../../../hoc/ErrorHandler'
 import WithLoading from '../../../hoc/WithLoading'
 import { ITab } from '../../../components/Tabs/types'
+import { ENUM_FILTER as COMIC_FILTER_TYPE } from '../../ComicList/enum'
+import { ENUM_FILTER as SERIES_FILTER_TYPE } from '../../SeriesList/enum'
 
 const Comics = lazy(() => import('../../ComicList'))
 const Series = lazy(() => import('../../SeriesList'))
@@ -43,12 +45,26 @@ const characterDetails: FC<IProps> = props => {
                     {
                         key: defaultTab,
                         title: 'Comics',
-                        component: <Comics characterId={characterId} />,
+                        component: (
+                            <Comics
+                                filter={{
+                                    type: COMIC_FILTER_TYPE.CHARACTER_ID,
+                                    value: characterId,
+                                }}
+                            />
+                        ),
                     },
                     {
                         key: 'series',
                         title: 'Series',
-                        component: <Series characterId={characterId} />,
+                        component: (
+                            <Series
+                                filter={{
+                                    value: characterId,
+                                    type: SERIES_FILTER_TYPE.CHARACTER_ID,
+                                }}
+                            />
+                        ),
                     },
                 ]
 
