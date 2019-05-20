@@ -18,24 +18,28 @@ import Comics from '../../components/CardList'
 import ErrorBoundary from '../../hoc/ErrorHandler'
 
 const comicList: FC<IProps> = props => {
+    const limit = props.limit ? props.limit : COMICS_LIMIT
     let query = FILTER_TYPE.get(ENUM_FILTER.DEFAULT)
+
     const variables: IVariables = {
         offset: 0,
-        limit: COMICS_LIMIT,
+        limit: limit,
     }
+
     if (props.filter) {
         query = FILTER_TYPE.get(props.filter.type)
-        variables.filterId = props.filter.value
+        variables.filter = props.filter.value
     }
 
     return (
         <Query<IData, IVariables> query={query} variables={variables}>
             {({ loading, error, data, fetchMore }) => {
-                const { pagination, data: generatedData } = getPageData(COMICS_URL, COMICS_LIMIT, data)
+                const { pagination, data: generatedData } = getPageData(COMICS_URL, limit, data)
 
                 return (
                     <ErrorBoundary error={error}>
                         <Comics
+                            infinityScrolling={props.infinityScrolling !== undefined ? props.infinityScrolling : true}
                             loading={loading}
                             data={generatedData}
                             pagination={pagination}

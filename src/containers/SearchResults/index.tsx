@@ -4,53 +4,91 @@
 
 import React, { FC } from 'react'
 import qs from 'qs'
-import { Query } from 'react-apollo'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
-import { IData } from '../../shared/types'
-import { IVariables, IProps } from './types'
-import SearchResults from '../../components/CardList'
-import ErrorBoundary from '../../hoc/ErrorHandler'
-import { getPageData } from '../../shared/util'
-import { CHARACTERS_LIMIT, CHARACTERS_URL } from '../../shared/constants'
-import { FETCH_CHARACTERS } from '../../shared/graphqlQuery'
+import style from './search_results.module.scss'
+
+import { IProps } from './types'
+import Characters, { ENUM_FILTER as CHARACTER_FILTER } from '../../containers/CharacterList'
+import Comics, { ENUM_FILTER as COMIC_FILTER } from '../../containers/ComicList'
+import Series, { ENUM_FILTER as SERIES_FILTER } from '../../containers/SeriesList'
 
 const searchResults: FC<IProps> = props => {
-    let query = FETCH_CHARACTERS
     const { key: search } = qs.parse(props.location.search, {
         ignoreQueryPrefix: true,
     })
 
-    const variables: IVariables = {
-        search,
-    }
-
-    return search !== '' && search !== undefined ? (
-        <Query<IData, IVariables> query={query} variables={variables}>
-            {({ loading, error, data, fetchMore }) => {
-                const { pagination, data: generatedData } = getPageData(CHARACTERS_URL, CHARACTERS_LIMIT, data)
-
-                return (
-                    <ErrorBoundary error={error}>
-                        <SearchResults
-                            loading={loading}
-                            data={generatedData}
-                            pagination={pagination}
-                            loadData={() => {
-                                // fetchMore({
-                                //     variables: {
-                                //         ...variables,
-                                //         offset:
-                                //             data && data.container ? data.container.limit + data.container.offset : 0,
-                                //     },
-                                //     updateQuery: (prev, { fetchMoreResult }) => getUpdatedPage(prev, fetchMoreResult),
-                                // })
+    return search ? (
+        <div className={['container-fluid', style['search-results']].join(' ')}>
+            <div className="row">
+                <h2 className="col-12">
+                    <div className={style['heading']}>{`Showing results for the search "${search}"`}</div>
+                </h2>
+            </div>
+            <div className="row mb-3">
+                <div className="col-12">
+                    <div className={style['header']}>
+                        Characters
+                        <Link to={`/?search=${search}`} className={style['show-more']}>
+                            Show more
+                        </Link>
+                    </div>
+                    <div className="row">
+                        <Characters
+                            limit={6}
+                            infinityScrolling={false}
+                            withSpace={true}
+                            filter={{
+                                type: CHARACTER_FILTER.NAME_STARTS_WITH,
+                                value: search,
                             }}
                         />
-                    </ErrorBoundary>
-                )
-            }}
-        </Query>
+                    </div>
+                </div>
+            </div>
+
+            <div className="row mb-3">
+                <div className="col-12">
+                    <div className={style['header']}>
+                        Comics
+                        <Link to={`/comics?search=${search}`} className={style['show-more']}>
+                            Show more
+                        </Link>
+                    </div>
+                    <div className="row">
+                        <Comics
+                            limit={6}
+                            infinityScrolling={false}
+                            filter={{
+                                type: COMIC_FILTER.TITLE_STARTS_WITH,
+                                value: search,
+                            }}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div className="row">
+                <div className="col-12">
+                    <div className={style['header']}>
+                        Series
+                        <Link to={`/series?search=${search}`} className={style['show-more']}>
+                            Show more
+                        </Link>
+                    </div>
+                    <div className="row">
+                        <Series
+                            limit={6}
+                            infinityScrolling={false}
+                            filter={{
+                                type: SERIES_FILTER.TITLE_STARTS_WITH,
+                                value: search,
+                            }}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
     ) : (
         <Redirect to="/" />
     )

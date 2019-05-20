@@ -6,6 +6,8 @@ export interface IFilter {
 }
 
 export interface IProps {
+    infinityScrolling?: boolean
+    limit?: number
     withSpace?: boolean
     filter?: IFilter
 }
@@ -13,5 +15,5 @@ export interface IProps {
 export interface IVariables {
     offset: number
     limit: number
-    filterId?: string
+    filter?: string
 }

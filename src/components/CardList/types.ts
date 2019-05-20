@@ -13,5 +13,6 @@ export interface IProps {
     loadData: () => void
     loading: boolean
     pagination: IPagination
+    infinityScrolling: boolean
     noSpace?: boolean
 }

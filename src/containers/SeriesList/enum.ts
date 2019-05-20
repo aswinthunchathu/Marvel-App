@@ -2,10 +2,12 @@ import { FETCH_SERIES, FETCH_SERIES_BY_CHARACTER_ID } from '../../shared/graphql
 
 export enum ENUM_FILTER {
     'DEFAULT' = 'default',
+    'TITLE_STARTS_WITH' = 'TITLE_STARTS_WITH',
     'CHARACTER_ID' = 'characterId',
 }
 
 export const FILTER_TYPE = new Map([
     [ENUM_FILTER.DEFAULT, FETCH_SERIES],
+    [ENUM_FILTER.TITLE_STARTS_WITH, FETCH_SERIES],
     [ENUM_FILTER.CHARACTER_ID, FETCH_SERIES_BY_CHARACTER_ID],
 ])

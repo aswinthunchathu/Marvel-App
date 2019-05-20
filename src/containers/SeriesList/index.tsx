@@ -18,24 +18,26 @@ import Series from '../../components/CardList'
 import ErrorBoundary from '../../hoc/ErrorHandler'
 
 const seriesList: FC<IProps> = props => {
+    const limit = props.limit ? props.limit : SERIES_LIMIT
     let query = FILTER_TYPE.get(ENUM_FILTER.DEFAULT)
     const variables: IVariables = {
         offset: 0,
-        limit: SERIES_LIMIT,
+        limit: limit,
     }
     if (props.filter) {
         query = FILTER_TYPE.get(props.filter.type)
-        variables.filterId = props.filter.value
+        variables.filter = props.filter.value
     }
 
     return (
         <Query<IData, IVariables> query={query} variables={variables}>
             {({ loading, error, data, fetchMore }) => {
-                const { pagination, data: generatedData } = getPageData(SERIES_URL, SERIES_LIMIT, data)
+                const { pagination, data: generatedData } = getPageData(SERIES_URL, limit, data)
 
                 return (
                     <ErrorBoundary error={error}>
                         <Series
+                            infinityScrolling={props.infinityScrolling !== undefined ? props.infinityScrolling : true}
                             loading={loading}
                             data={generatedData}
                             pagination={pagination}

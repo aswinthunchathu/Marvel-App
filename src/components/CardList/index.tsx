@@ -15,7 +15,9 @@ import { Link } from 'react-router-dom'
 import { IProps, ICardData } from './types'
 
 import Card from '../UI/Card'
+import Message, { MESSAGE_TYPES } from '../UI/Message'
 import InfinityScroller from '../../hoc/InfinityScroller'
+import WithLoading from '../../hoc/WithLoading'
 
 const cardList: FC<IProps> = props => {
     const data = props.data && props.data.length > 0 ? props.data : []
@@ -64,7 +66,7 @@ const cardList: FC<IProps> = props => {
 
     return (
         <div className="w-100">
-            {props.pagination ? (
+            {props.infinityScrolling ? (
                 <InfinityScroller
                     loading={props.loading}
                     data={data}
@@ -73,8 +75,10 @@ const cardList: FC<IProps> = props => {
                 >
                     {container}
                 </InfinityScroller>
+            ) : elements.length > 0 ? (
+                <WithLoading fetching={props.loading}>{container}</WithLoading>
             ) : (
-                container
+                <Message type={MESSAGE_TYPES.NO_MORE_DATA}>No data found</Message>
             )}
         </div>
     )

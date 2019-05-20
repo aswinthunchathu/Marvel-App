@@ -6,11 +6,13 @@ export interface IFilter {
 }
 
 export interface IProps {
+    limit?: number
     filter?: IFilter
+    infinityScrolling?: boolean
 }
 
 export interface IVariables {
     offset?: number
     limit?: number
-    filterId?: string
+    filter?: string
 }
