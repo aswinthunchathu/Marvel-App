@@ -262,3 +262,59 @@ export const FETCH_COMICS_BY_SERIES_ID = gql`
         }
     }
 `
+
+/*
+    Graphql query to fetch content based on search
+    @params search: string
+*/
+export const FETCH_SEARCH_RESULTS = gql`
+    query fetchSearchResults($search: String!) {
+        characters: container(offset: 0, limit: 6, nameStartsWith: $search)
+            @rest(type: "type_characters", path: "/characters?{args}") {
+            total
+            offset
+            limit
+            count
+            results @type(name: "type_characters_result") {
+                id
+                title: name
+                thumbnail @type(name: "type_characters_thumbnail") {
+                    path
+                    extension
+                }
+            }
+        }
+
+        comics: container(offset: 0, limit: 6, titleStartsWith: $search)
+            @rest(type: "type_comics", path: "/comics?{args}") {
+            total
+            offset
+            limit
+            count
+            results @type(name: "type_comics_results") {
+                id
+                title
+                thumbnail @type(name: "type_comics_thumbnail") {
+                    path
+                    extension
+                }
+            }
+        }
+
+        series: container(offset: 0, limit: 6, titleStartsWith: $search)
+            @rest(type: "type_series", path: "/series?{args}") {
+            total
+            offset
+            limit
+            count
+            results @type(name: "type_series_results") {
+                id
+                title
+                thumbnail @type(name: "type_series_thumbnail") {
+                    path
+                    extension
+                }
+            }
+        }
+    }
+`

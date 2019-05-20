@@ -1,25 +1,14 @@
 import { RouteComponentProps as IRouteComponentProps } from 'react-router-dom'
-import { IPagination, IData } from '../../shared/types'
+import { ICharacters, IComics, ISeriesList } from '../../shared/types'
 
 export interface IProps extends IRouteComponentProps {}
 
 export interface IVariables {
-    offset: number
-    limit: number
     search: string
 }
 
-export interface ISearchQuery {
-    query: string
-    variables: IVariables
-}
-
-export interface IResponse {
-    data: IData
-}
-
-export interface IShowResults {
-    type: string
-    count: number
-    loading: boolean
+export interface IData {
+    characters: ICharacters
+    comics: IComics
+    series: ISeriesList
 }

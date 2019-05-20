@@ -64,7 +64,7 @@ const cardList: FC<IProps> = props => {
 
     return (
         <div className="w-100">
-            {props.pagination ? (
+            {props.infiniteScrolling === true ? (
                 <InfinityScroller
                     loading={props.loading}
                     data={data}

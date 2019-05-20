@@ -14,4 +14,5 @@ export interface IProps {
     loading: boolean
     pagination: IPagination
     noSpace?: boolean
+    infiniteScrolling?: boolean
 }
