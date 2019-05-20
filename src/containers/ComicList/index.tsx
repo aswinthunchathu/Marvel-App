@@ -53,7 +53,9 @@ const comicList: FC<IProps> = props => {
                                     updateQuery: (prev, { fetchMoreResult }) => getUpdatedPage(prev, fetchMoreResult),
                                 })
                             }}
-                        />
+                        >
+                            {props.children}
+                        </Comics>
                     </ErrorBoundary>
                 )
             }}

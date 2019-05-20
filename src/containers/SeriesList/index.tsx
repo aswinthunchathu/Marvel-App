@@ -51,7 +51,9 @@ const seriesList: FC<IProps> = props => {
                                     updateQuery: (prev, { fetchMoreResult }) => getUpdatedPage(prev, fetchMoreResult),
                                 })
                             }}
-                        />
+                        >
+                            {props.children}
+                        </Series>
                     </ErrorBoundary>
                 )
             }}

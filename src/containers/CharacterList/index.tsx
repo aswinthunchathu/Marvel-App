@@ -61,7 +61,9 @@ const characterList: FC<IProps> = props => {
                                     updateQuery: (prev, { fetchMoreResult }) => getUpdatedPage(prev, fetchMoreResult),
                                 })
                             }}
-                        />
+                        >
+                            {props.children}
+                        </Characters>
                     </ErrorBoundary>
                 )
             }}

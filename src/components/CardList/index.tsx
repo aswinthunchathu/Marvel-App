@@ -15,8 +15,6 @@ import { Link } from 'react-router-dom'
 import { IProps, ICardData } from './types'
 
 import Card from '../UI/Card'
-import Message, { MESSAGE_TYPES } from '../UI/Message'
-import WithLoading from '../../hoc/WithLoading'
 import InfinityScroller from '../../hoc/InfinityScroller'
 
 const cardList: FC<IProps> = props => {
@@ -58,6 +56,7 @@ const cardList: FC<IProps> = props => {
 
     const container = (
         <div className="container-fluid">
+            {elements.length > 0 && props.children}
             <TransitionGroup component="div" className="row">
                 {elements}
             </TransitionGroup>
@@ -75,10 +74,8 @@ const cardList: FC<IProps> = props => {
                 >
                     {container}
                 </InfinityScroller>
-            ) : !props.loading && elements.length === 0 ? (
-                <Message type={MESSAGE_TYPES.NO_MORE_DATA}>No data found</Message>
             ) : (
-                <WithLoading fetching={props.loading}>{container}</WithLoading>
+                container
             )}
         </div>
     )

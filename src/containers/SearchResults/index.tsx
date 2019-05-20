@@ -28,12 +28,6 @@ const searchResults: FC<IProps> = props => {
 
             <div className="row mb-3">
                 <div className="col-12">
-                    <div className={style['header']}>
-                        Characters
-                        <Link to={`/?search=${search}`} className={style['show-more']}>
-                            Show more
-                        </Link>
-                    </div>
                     <div className="row">
                         <Characters
                             limit={6}
@@ -43,19 +37,20 @@ const searchResults: FC<IProps> = props => {
                                 type: CHARACTER_FILTER.NAME_STARTS_WITH,
                                 value: search,
                             }}
-                        />
+                        >
+                            <div className={style['header']}>
+                                Characters
+                                <Link to={`/?search=${search}`} className={style['show-more']}>
+                                    Show more
+                                </Link>
+                            </div>
+                        </Characters>
                     </div>
                 </div>
             </div>
 
             <div className="row mb-3">
                 <div className="col-12">
-                    <div className={style['header']}>
-                        Comics
-                        <Link to={`/comics?search=${search}`} className={style['show-more']}>
-                            Show more
-                        </Link>
-                    </div>
                     <div className="row">
                         <Comics
                             limit={6}
@@ -64,19 +59,21 @@ const searchResults: FC<IProps> = props => {
                                 type: COMIC_FILTER.TITLE_STARTS_WITH,
                                 value: search,
                             }}
-                        />
+                        >
+                            {' '}
+                            <div className={style['header']}>
+                                Comics
+                                <Link to={`/comics?search=${search}`} className={style['show-more']}>
+                                    Show more
+                                </Link>
+                            </div>
+                        </Comics>
                     </div>
                 </div>
             </div>
 
             <div className="row">
                 <div className="col-12">
-                    <div className={style['header']}>
-                        Series
-                        <Link to={`/series?search=${search}`} className={style['show-more']}>
-                            Show more
-                        </Link>
-                    </div>
                     <div className="row">
                         <Series
                             limit={6}
@@ -85,7 +82,14 @@ const searchResults: FC<IProps> = props => {
                                 type: SERIES_FILTER.TITLE_STARTS_WITH,
                                 value: search,
                             }}
-                        />
+                        >
+                            <div className={style['header']}>
+                                Series
+                                <Link to={`/series?search=${search}`} className={style['show-more']}>
+                                    Show more
+                                </Link>
+                            </div>
+                        </Series>
                     </div>
                 </div>
             </div>
