@@ -1,0 +1,77 @@
+@import '../../../node_modules/bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../mixins';
+
+.search {
+    $default: $gray-700;
+    $highlight: $gray-300;
+    $border: 1px solid $default !important;
+
+    @include rem-fallback(padding, 0, 15px);
+    position: relative;
+
+    button {
+        border: none;
+        box-shadow: none !important;
+        border-bottom: $border;
+        border-radius: 0;
+        @include rem-fallback(padding, 5px);
+        transition: all 0.5s ease-out;
+        @include rem-fallback(width, 50px);
+        background: transparent !important;
+    }
+
+    input {
+        background: transparent !important;
+        border: none;
+        box-shadow: none !important;
+        outline: none !important;
+        border-bottom: $border;
+        border-radius: 0;
+        @include rem-fallback(padding, 0, 5px, 0, 5px);
+        color: $white !important;
+        @include rem-fallback(font-size, 30px);
+        height: auto;
+        transition: all 0.5s ease-out;
+    }
+
+    .search-icon {
+        position: relative;
+        text-align: center;
+        display: inline-block;
+        transform: scale(0.8);
+
+        &__circle {
+            width: 20px;
+            height: 20px;
+            border: 2px solid $default;
+            border-radius: 50%;
+            transition: all 0.5s ease-out;
+        }
+
+        &__rectangle {
+            position: absolute;
+            width: 15px;
+            height: 4px;
+            background-color: $default;
+            transform: rotate(45deg);
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+            top: 20px;
+            left: 15px;
+            transition: all 0.5s ease-out;
+        }
+    }
+
+    &:focus-within {
+        input,
+        button,
+        .search-icon__circle {
+            border-color: $highlight !important;
+        }
+
+        .search-icon__rectangle {
+            background-color: $highlight;
+        }
+    }
+}
