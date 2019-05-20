@@ -17,3 +17,9 @@ export interface ISearchQuery {
 export interface IResponse {
     data: IData
 }
+
+export interface IShowResults {
+    type: string
+    count: number
+    loading: boolean
+}

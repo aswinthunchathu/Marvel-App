@@ -10,6 +10,7 @@ export interface IProps {
     limit?: number
     withSpace?: boolean
     filter?: IFilter
+    getDataCount?: (count: number, loading: boolean) => void
 }
 
 export interface IVariables {

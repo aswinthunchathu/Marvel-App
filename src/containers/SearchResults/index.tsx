@@ -25,6 +25,7 @@ const searchResults: FC<IProps> = props => {
                     <div className={style['heading']}>{`Showing results for the search "${search}"`}</div>
                 </h2>
             </div>
+
             <div className="row mb-3">
                 <div className="col-12">
                     <div className={style['header']}>

@@ -16,8 +16,8 @@ import { IProps, ICardData } from './types'
 
 import Card from '../UI/Card'
 import Message, { MESSAGE_TYPES } from '../UI/Message'
-import InfinityScroller from '../../hoc/InfinityScroller'
 import WithLoading from '../../hoc/WithLoading'
+import InfinityScroller from '../../hoc/InfinityScroller'
 
 const cardList: FC<IProps> = props => {
     const data = props.data && props.data.length > 0 ? props.data : []
@@ -75,10 +75,10 @@ const cardList: FC<IProps> = props => {
                 >
                     {container}
                 </InfinityScroller>
-            ) : elements.length > 0 ? (
-                <WithLoading fetching={props.loading}>{container}</WithLoading>
-            ) : (
+            ) : !props.loading && elements.length === 0 ? (
                 <Message type={MESSAGE_TYPES.NO_MORE_DATA}>No data found</Message>
+            ) : (
+                <WithLoading fetching={props.loading}>{container}</WithLoading>
             )}
         </div>
     )

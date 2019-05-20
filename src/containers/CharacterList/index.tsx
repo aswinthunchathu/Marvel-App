@@ -34,6 +34,10 @@ const characterList: FC<IProps> = props => {
     return (
         <Query<IData, IVariables> query={query} variables={variables}>
             {({ loading, error, data, fetchMore }) => {
+                if (props.getDataCount) {
+                    props.getDataCount(data && data.container ? data.container.total : 0, loading)
+                }
+
                 const { pagination, data: generatedData } =
                     props.withSpace || isMobile()
                         ? getPageData(CHARACTERS_URL, limit, data)
