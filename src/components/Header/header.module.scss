@@ -15,8 +15,7 @@ $bgColor: rgba(0, 0, 0, 0.9);
         left: 0;
         background-color: $bgColor;
         display: flex;
-        align-content: center;
-        align-items: center;
+        align-items: flex-end;
         justify-content: space-between;
     }
 
@@ -89,5 +88,11 @@ $bgColor: rgba(0, 0, 0, 0.9);
                 transform: rotate(45deg) translate(-10px, -11px);
             }
         }
+    }
+}
+
+@media (min-width: map-get($grid-breakpoints, lg)) {
+    .search-mb {
+        display: none;
     }
 }

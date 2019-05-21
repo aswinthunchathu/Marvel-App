@@ -11,8 +11,7 @@
     z-index: 10;
     display: none;
     flex-direction: column;
-
-    @include rem-fallback(width, 250);
+    width: 75%;
 
     @media (max-width: map-get($grid-breakpoints, lg) - 1) {
         @include rem-fallback(top, 80);
@@ -21,6 +20,10 @@
 
     @media (min-width: map-get($grid-breakpoints, lg)) {
         display: flex !important;
+    }
+
+    @media (min-width: map-get($grid-breakpoints, sm)) {
+        @include rem-fallback(width, 300);
     }
 
     @media (min-width: map-get($grid-breakpoints, xl)) {
@@ -57,5 +60,15 @@
         left: 0;
         z-index: 9;
         position: fixed;
+    }
+}
+
+.search-dt {
+    display: none;
+}
+
+@media (min-width: map-get($grid-breakpoints, lg)) {
+    .search-dt {
+        display: block;
     }
 }

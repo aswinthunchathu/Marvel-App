@@ -48,7 +48,7 @@ class Search extends Component<IProps, IState> {
             <Fragment>
                 <Form className={css.join(' ')} onSubmit={this.onSubmit}>
                     <Form.Group controlId="app-search" className="m-0">
-                        <InputGroup className="mb-3">
+                        <InputGroup>
                             <Form.Control size="lg" type="text" name="txtSearch" />
                             <InputGroup.Append>
                                 <Button variant="outline-secondary" type="submit">
