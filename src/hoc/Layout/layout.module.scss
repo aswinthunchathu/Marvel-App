@@ -11,7 +11,7 @@
     }
 
     @media (min-width: map-get($grid-breakpoints, lg)) {
-        @include rem-fallback(padding-left, 250px);
+        @include rem-fallback(padding-left, 300px);
     }
 
     @media (min-width: map-get($grid-breakpoints, xl)) {
