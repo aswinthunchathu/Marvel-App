@@ -1,4 +1,5 @@
 import { gql } from 'apollo-boost'
+import { SEARCH_LIMIT } from './constants'
 
 /*
     Graphql query to fetch all characters ordered by modified date in desc
@@ -269,7 +270,7 @@ export const FETCH_COMICS_BY_SERIES_ID = gql`
 */
 export const FETCH_SEARCH_RESULTS = gql`
     query fetchSearchResults($search: String!) {
-        characters: container(offset: 0, limit: 6, nameStartsWith: $search)
+        characters: container(offset: 0, limit: ${SEARCH_LIMIT}, nameStartsWith: $search)
             @rest(type: "type_characters", path: "/characters?{args}") {
             total
             offset

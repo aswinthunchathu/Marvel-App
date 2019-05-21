@@ -36,6 +36,7 @@ const comicList: FC<IProps> = props => {
                 return (
                     <ErrorBoundary error={error}>
                         <Comics
+                            infiniteScrolling={true}
                             loading={loading}
                             data={generatedData}
                             pagination={pagination}

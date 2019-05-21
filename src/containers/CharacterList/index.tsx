@@ -41,6 +41,7 @@ const characterList: FC<IProps> = props => {
                     <ErrorBoundary error={error}>
                         <Characters
                             noSpace={props.withSpace ? false : true}
+                            infiniteScrolling={true}
                             loading={loading}
                             data={generatedData}
                             pagination={pagination}

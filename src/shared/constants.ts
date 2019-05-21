@@ -1,6 +1,7 @@
 export const COMICS_LIMIT = 30
 export const SERIES_LIMIT = 30
 export const CHARACTERS_LIMIT = 20
+export const SEARCH_LIMIT = 6
 
 export const CHARACTERS_URL = '/characters'
 export const COMICS_URL = '/comics'

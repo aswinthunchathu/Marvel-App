@@ -36,6 +36,7 @@ const seriesList: FC<IProps> = props => {
                 return (
                     <ErrorBoundary error={error}>
                         <Series
+                            infiniteScrolling={true}
                             loading={loading}
                             data={generatedData}
                             pagination={pagination}
