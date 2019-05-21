@@ -13,7 +13,6 @@ import style from './sidebar.module.scss'
 import logo from '../../../assets/images/logo.svg'
 
 import Search from '../../Search'
-import { isMobile } from '../../../shared/util'
 
 const sidebar: FC<IProps> = props => {
     return (
@@ -24,7 +23,7 @@ const sidebar: FC<IProps> = props => {
                 </Link>
                 {props.children}
                 <div className="mt-auto">
-                    {!isMobile() && <Search className="mb-5" redirectTo="/search" />}
+                    <Search className={['mb-5', style['search-dt']].join(' ')} redirectTo="/search" />
                     <div className={style['copy-write-mark']}>Data provided by Marvel. © 2014 Marvel</div>
                 </div>
             </div>

@@ -14,11 +14,6 @@
 
     &-floating {
         overflow: hidden;
-        @include rem-fallback(height, 300);
-
-        @media (min-width: map-get($grid-breakpoints, md)) and (max-width: map-get($grid-breakpoints, lg) - 1) {
-            @include rem-fallback(height, 250);
-        }
     }
 
     .card-image {
@@ -42,7 +37,7 @@
         margin-top: auto;
         @include rem-fallback(font-size, 14);
 
-        @media (min-width: map-get($grid-breakpoints, md)) {
+        @media (min-width: map-get($grid-breakpoints, lg)) {
             @include rem-fallback(font-size, 18);
             @include rem-fallback(padding, 4, 10);
         }

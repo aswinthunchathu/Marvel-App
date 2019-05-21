@@ -10,7 +10,7 @@ import React, { FC } from 'react'
 import { Query } from 'react-apollo'
 
 import { CHARACTERS_LIMIT, CHARACTERS_URL, SEARCH_KEY } from '../../shared/constants'
-import { getPageData, isMobile, getUpdatedPage, getQueryValue } from '../../shared/util'
+import { getPageData, getUpdatedPage, getQueryValue } from '../../shared/util'
 import { IData } from '../../shared/types'
 import { IVariables, IProps } from './types'
 import { FILTER_TYPE, ENUM_FILTER } from './enum'
@@ -36,10 +36,7 @@ const characterList: FC<IProps> = props => {
     return (
         <Query<IData, IVariables> query={query} variables={variables}>
             {({ loading, error, data, fetchMore }) => {
-                const { pagination, data: generatedData } =
-                    props.withSpace || isMobile()
-                        ? getPageData(CHARACTERS_URL, CHARACTERS_LIMIT, data)
-                        : getPageData(CHARACTERS_URL, CHARACTERS_LIMIT, data, '')
+                const { pagination, data: generatedData } = getPageData(CHARACTERS_URL, CHARACTERS_LIMIT, data)
 
                 return (
                     <ErrorBoundary error={error}>

@@ -16,12 +16,13 @@ import Sidebar from './Sidebar'
 import NavigationItems from './NavigationItems'
 import { isMobile } from '../../shared/util'
 import { IState } from './types'
+import Search from '../Search'
 
 class Header extends Component<{}, IState> {
     constructor(props: {}) {
         super(props)
         this.state = {
-            open: !isMobile(),
+            open: false,
         }
     }
 
@@ -43,8 +44,8 @@ class Header extends Component<{}, IState> {
                     <span />
                     <span />
                 </div>
-
-                <CSSTransition in={this.state.open} timeout={300} classNames="slide-left" unmountOnExit>
+                <Search className={style['search-mb']} redirectTo="/search" />
+                <CSSTransition in={this.state.open} timeout={300} classNames="slide-left">
                     <Sidebar click={this.toggleSideBar}>
                         <NavigationItems onLinkClick={this.toggleSideBar} />
                     </Sidebar>
