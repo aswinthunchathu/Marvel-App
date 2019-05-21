@@ -25,24 +25,28 @@ class Image extends Component<IProps> {
     }
 
     render() {
-        const css = [this.props.className, style['animation']]
-        const cssPlaceholder = [style['image-placeholder'], style['animation']]
+        const css = ['position-relative', 'text-center', style['bg']]
+        let backgroundImage = ''
 
         if (this.state.isLoaded) {
-            css.push(style['show'])
-            cssPlaceholder.push(style['hide'])
+            backgroundImage = `url(${this.props.src})`
         } else {
-            cssPlaceholder.push(style['show'])
-            css.push(style['hide'])
+            css.push(style['bg-blurred'])
+            backgroundImage = `url(${this.props.placeholder ? this.props.placeholder : placeHolder})`
         }
 
         return (
-            <div className="position-relative text-center">
-                <img src={this.props.src} alt={this.props.alt} onLoad={this.onLoad} className={css.join(' ')} />
+            <div
+                className={css.join(' ')}
+                style={{
+                    backgroundImage,
+                }}
+            >
                 <img
-                    className={cssPlaceholder.join(' ')}
-                    src={this.props.placeholder ? this.props.placeholder : placeHolder}
-                    alt="placeholder"
+                    src={this.props.src}
+                    alt={this.props.alt}
+                    onLoad={this.onLoad}
+                    className={[this.props.className, style['hide']].join(' ')}
                 />
             </div>
         )

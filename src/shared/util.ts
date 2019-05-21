@@ -29,7 +29,7 @@ class Pagination implements IPagination {
 export const generateCardData = (
     data: (ICharacter | IComic | ISeries)[],
     link: string,
-    imageType: string = '/portrait_incredible',
+    imageType: string = '/portrait_uncanny',
     placeholderImageType: string = '/portrait_small'
 ): ICardData[] =>
     data.map(
@@ -125,7 +125,7 @@ export const getCardDetailsData = (data?: IData) => {
     This function checks if the device is mobile or not
     returns boolean
 */
-export const isMobile = () => window.outerWidth < 768
+export const isMobile = () => window.outerWidth < 992
 
 /*
     This function checks if the device is mobile or not

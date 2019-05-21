@@ -10,7 +10,7 @@
         position: relative;
     }
 
-    @media (min-width: map-get($grid-breakpoints, md)) {
+    @media (min-width: map-get($grid-breakpoints, lg)) {
         @include rem-fallback(padding-left, 250px);
     }
 
