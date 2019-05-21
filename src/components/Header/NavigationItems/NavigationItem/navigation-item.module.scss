@@ -16,7 +16,7 @@
         text-decoration: none;
         cursor: pointer;
 
-        @media (min-width: map-get($grid-breakpoints, lg)) {
+        @media (min-width: map-get($grid-breakpoints, md)) {
             @include rem-fallback(padding, 10);
             @include rem-fallback(margin-bottom, 20);
 

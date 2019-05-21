@@ -125,7 +125,7 @@ export const getCardDetailsData = (data?: IData) => {
     This function checks if the device is mobile or not
     returns boolean
 */
-export const isMobile = () => window.outerWidth < 992
+export const isMobile = () => window.outerWidth < 768
 
 /*
     This function checks if the device is mobile or not

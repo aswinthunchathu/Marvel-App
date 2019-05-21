@@ -42,7 +42,7 @@
         margin-top: auto;
         @include rem-fallback(font-size, 14);
 
-        @media (min-width: map-get($grid-breakpoints, lg)) {
+        @media (min-width: map-get($grid-breakpoints, md)) {
             @include rem-fallback(font-size, 18);
             @include rem-fallback(padding, 4, 10);
         }

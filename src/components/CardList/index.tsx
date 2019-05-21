@@ -37,8 +37,8 @@ const cardList: FC<IProps> = props => {
                           <div
                               className={
                                   props.noSpace
-                                      ? 'col-6 col-sm-4 col-md-3 col-lg-4 col-xl-3 px-0'
-                                      : 'col-6 col-sm-4 col-md-2 col-lg-3 col-xl-2 mb-4'
+                                      ? 'col-6 col-sm-4 col-md-6 col-lg-4 col-xl-3 px-0'
+                                      : 'col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 mb-4'
                               }
                           >
                               {item.link ? (
