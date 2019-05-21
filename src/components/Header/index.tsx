@@ -18,18 +18,15 @@ import { isMobile } from '../../shared/util'
 import { IState } from './types'
 
 class Header extends Component<{}, IState> {
-    isMobile: boolean = false
-
     constructor(props: {}) {
         super(props)
-        this.isMobile = isMobile()
         this.state = {
-            open: !this.isMobile,
+            open: !isMobile(),
         }
     }
 
     toggleSideBar = () => {
-        if (this.isMobile) {
+        if (isMobile()) {
             this.setState(prev => ({
                 open: !prev.open,
             }))

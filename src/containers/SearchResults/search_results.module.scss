@@ -1,0 +1,27 @@
+@import '../../../node_modules/bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../mixins';
+
+.heading {
+    color: $gray-500;
+    font-size: 24px;
+    text-align: center;
+
+    @include rem-fallback(margin, 20px, 0, 0, 0);
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        @include rem-fallback(font-size, 32px);
+    }
+}
+
+.header {
+    color: $gray-400;
+    @include rem-fallback(font-size, 28px);
+    text-transform: capitalize;
+
+    .show-more {
+        @include rem-fallback(margin, 0, 0, 0, 10px);
+        @include rem-fallback(font-size, 18px);
+        color: $red;
+    }
+}

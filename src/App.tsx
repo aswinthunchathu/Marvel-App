@@ -9,6 +9,7 @@ const Series = lazy(() => import('./containers/SeriesList'))
 const CharacterDetails = lazy(() => import('./containers/CharacterList/CharacterDetails'))
 const ComicDetails = lazy(() => import('./containers/ComicList/ComicDetails'))
 const SeriesDetails = lazy(() => import('./containers/SeriesList/SeriesDetails'))
+const SearchResults = lazy(() => import('./containers/SearchResults'))
 
 const App: FC = props => {
     return (
@@ -16,6 +17,7 @@ const App: FC = props => {
             <Layout>
                 <Suspense fallback={<Loader />}>
                     <Switch>
+                        <Route path="/search" exact component={SearchResults} />
                         <Route path="/series/:id" exact component={SeriesDetails} />
                         <Route path="/comics/:id" exact component={ComicDetails} />
                         <Route path="/characters/:id" exact component={CharacterDetails} />

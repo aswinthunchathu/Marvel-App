@@ -1,6 +1,7 @@
 import { ICharacter, IComic, ISeries, IPagination, IData } from './types'
 import { ICardData } from '../components/CardList'
 import { ICardDetails } from '../components/CardList/CardDetails'
+import qs from 'qs'
 
 /*
     This class is used for instantiating pagination
@@ -124,4 +125,15 @@ export const getCardDetailsData = (data?: IData) => {
     This function checks if the device is mobile or not
     returns boolean
 */
-export const isMobile = () => window.outerWidth < 992
+export const isMobile = () => window.outerWidth < 768
+
+/*
+    This function checks if the device is mobile or not
+    returns boolean
+*/
+export const getQueryValue = (str: string, key: string) => {
+    const params = qs.parse(str, {
+        ignoreQueryPrefix: true,
+    })
+    return params[key]
+}

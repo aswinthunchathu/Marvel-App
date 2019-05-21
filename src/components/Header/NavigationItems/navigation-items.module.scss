@@ -7,7 +7,7 @@
     list-style-type: none;
     text-align: center;
 
-    @media (min-width: map-get($grid-breakpoints, lg)) {
+    @media (min-width: map-get($grid-breakpoints, md)) {
         @include rem-fallback(margin, 50, 0, 0, 0);
     }
 }

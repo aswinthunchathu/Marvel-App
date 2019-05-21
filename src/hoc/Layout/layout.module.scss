@@ -1,3 +1,7 @@
+@import '../../../node_modules//bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../mixins';
+
 .layout {
     box-sizing: border-box;
     position: relative;
@@ -6,11 +10,11 @@
         position: relative;
     }
 
-    @media (min-width: 992px) {
-        padding-left: 250px;
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        @include rem-fallback(padding-left, 250px);
     }
 
-    @media (min-width: 1200px) {
+    @media (min-width: map-get($grid-breakpoints, xl)) {
         padding-left: 20%;
     }
 }

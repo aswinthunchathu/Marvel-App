@@ -5,13 +5,22 @@ export interface IFilter {
     value: string
 }
 
-export interface IProps {
-    withSpace?: boolean
-    filter?: IFilter
-}
+export type IProps =
+    | {
+          withSpace?: boolean
+          filter?: IFilter
+          location?: never
+      }
+    | {
+          withSpace?: boolean
+          filter?: never
+          location?: {
+              search: string
+          }
+      }
 
 export interface IVariables {
     offset: number
     limit: number
-    filterId?: string
+    filter?: string
 }

@@ -37,7 +37,7 @@ class Image extends Component<IProps> {
         }
 
         return (
-            <div className="position-relative">
+            <div className="position-relative text-center">
                 <img src={this.props.src} alt={this.props.alt} onLoad={this.onLoad} className={css.join(' ')} />
                 <img
                     className={cssPlaceholder.join(' ')}

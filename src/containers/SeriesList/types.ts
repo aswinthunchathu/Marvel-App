@@ -5,12 +5,20 @@ export interface IFilter {
     value: string
 }
 
-export interface IProps {
-    filter?: IFilter
-}
+export type IProps =
+    | {
+          filter?: IFilter
+          location?: never
+      }
+    | {
+          filter?: never
+          location?: {
+              search: string
+          }
+      }
 
 export interface IVariables {
     offset?: number
     limit?: number
-    filterId?: string
+    filter?: string
 }

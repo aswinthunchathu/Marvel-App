@@ -11,7 +11,7 @@
     text-align: center;
     left: 0;
 
-    @media (min-width: map-get($grid-breakpoints, lg)) {
+    @media (min-width: map-get($grid-breakpoints, md)) {
         text-align: right;
     }
 

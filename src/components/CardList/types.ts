@@ -8,10 +8,26 @@ export interface ICardData {
     link?: string
 }
 
-export interface IProps {
-    data?: ICardData[]
-    loadData: () => void
-    loading: boolean
-    pagination: IPagination
-    noSpace?: boolean
-}
+// export interface IProps {
+//     data?: ICardData[]
+//     noSpace?: boolean
+//     infiniteScrolling?: boolean
+//     loadData?: () => void
+//     loading: boolean
+//     pagination: IPagination
+// }
+
+export type IProps =
+    | {
+          data?: ICardData[]
+          noSpace?: boolean
+          infiniteScrolling: true
+          loadData: () => void
+          loading: boolean
+          pagination: IPagination
+      }
+    | {
+          data?: ICardData[]
+          noSpace?: boolean
+          infiniteScrolling: false
+      }

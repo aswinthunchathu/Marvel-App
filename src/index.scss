@@ -18,12 +18,12 @@ body {
     background-attachment: fixed;
     background-position: 50% 50%;
 
-    @media (max-width: map-get($grid-breakpoints, lg) - 1) {
+    @media (max-width: map-get($grid-breakpoints, md) - 1) {
         background-position: 50% calc(50% + 80px);
     }
 }
 
-@media (max-width: map-get($grid-breakpoints, lg) - 1) {
+@media (max-width: map-get($grid-breakpoints, md) - 1) {
     body {
         @include rem-fallback(padding, 80, 0, 0, 0);
     }
