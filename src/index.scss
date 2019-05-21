@@ -7,25 +7,26 @@ $body-gradient: #45484d;
 
 html,
 body {
+    height: 100%;
+    width: 100%;
     font-family: 'Teko', sans-serif;
     padding: 0;
     margin: 0;
-    height: 100%;
+}
+
+body {
     background: $black;
     background: -moz-linear-gradient(top, $body-gradient 0%, $black 100%);
     background: -webkit-linear-gradient(top, $body-gradient 0%, $black 100%);
     background: linear-gradient(to bottom, $body-gradient 0%, $black 100%);
     background-attachment: fixed;
-    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: 50% calc(50% + 80px);
+    @include rem-fallback(padding, 80, 0, 0, 0);
 
-    @media (max-width: map-get($grid-breakpoints, lg) - 1) {
-        background-position: 50% calc(50% + 80px);
-    }
-}
-
-@media (max-width: map-get($grid-breakpoints, lg) - 1) {
-    body {
-        @include rem-fallback(padding, 80, 0, 0, 0);
+    @media (min-width: map-get($grid-breakpoints, lg)) {
+        padding: 0;
+        background-position: 50% calc(50% + 0);
     }
 }
 
