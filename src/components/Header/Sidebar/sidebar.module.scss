@@ -11,7 +11,16 @@
     z-index: 10;
     display: none;
     flex-direction: column;
+
     width: 75%;
+
+    @media (min-width: map-get($grid-breakpoints, sm)) {
+        @include rem-fallback(width, 300px);
+    }
+
+    @media (min-width: map-get($grid-breakpoints, xl)) {
+        width: 20%;
+    }
 
     @media (max-width: map-get($grid-breakpoints, lg) - 1) {
         @include rem-fallback(top, 80);
@@ -20,14 +29,6 @@
 
     @media (min-width: map-get($grid-breakpoints, lg)) {
         display: flex !important;
-    }
-
-    @media (min-width: map-get($grid-breakpoints, sm)) {
-        @include rem-fallback(width, 300);
-    }
-
-    @media (min-width: map-get($grid-breakpoints, xl)) {
-        width: 20%;
     }
 
     .brand-holder {
