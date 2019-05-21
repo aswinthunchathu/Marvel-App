@@ -25,10 +25,8 @@ const comicList: FC<IProps> = props => {
     }
 
     if (props.location) {
-        const search = getQueryValue(props.location.search, SEARCH_KEY)
-    }
-
-    if (props.filter) {
+        variables.filter = getQueryValue(props.location.search, SEARCH_KEY)
+    } else if (props.filter) {
         query = FILTER_TYPE.get(props.filter.type)
         variables.filter = props.filter.value
     }

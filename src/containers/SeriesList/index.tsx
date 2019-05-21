@@ -8,8 +8,8 @@
 import React, { FC } from 'react'
 import { Query } from 'react-apollo'
 
-import { getPageData, getUpdatedPage } from '../../shared/util'
-import { SERIES_LIMIT, SERIES_URL } from '../../shared/constants'
+import { getPageData, getUpdatedPage, getQueryValue } from '../../shared/util'
+import { SERIES_LIMIT, SERIES_URL, SEARCH_KEY } from '../../shared/constants'
 import { IData } from '../../shared/types'
 import { IVariables, IProps } from './types'
 import { FILTER_TYPE, ENUM_FILTER } from './enum'
@@ -19,11 +19,15 @@ import ErrorBoundary from '../../hoc/ErrorHandler'
 
 const seriesList: FC<IProps> = props => {
     let query = FILTER_TYPE.get(ENUM_FILTER.DEFAULT)
+
     const variables: IVariables = {
         offset: 0,
         limit: SERIES_LIMIT,
     }
-    if (props.filter) {
+
+    if (props.location) {
+        variables.filter = getQueryValue(props.location.search, SEARCH_KEY)
+    } else if (props.filter) {
         query = FILTER_TYPE.get(props.filter.type)
         variables.filter = props.filter.value
     }

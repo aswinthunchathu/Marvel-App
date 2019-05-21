@@ -9,8 +9,8 @@
 import React, { FC } from 'react'
 import { Query } from 'react-apollo'
 
-import { CHARACTERS_LIMIT, CHARACTERS_URL } from '../../shared/constants'
-import { getPageData, isMobile, getUpdatedPage } from '../../shared/util'
+import { CHARACTERS_LIMIT, CHARACTERS_URL, SEARCH_KEY } from '../../shared/constants'
+import { getPageData, isMobile, getUpdatedPage, getQueryValue } from '../../shared/util'
 import { IData } from '../../shared/types'
 import { IVariables, IProps } from './types'
 import { FILTER_TYPE, ENUM_FILTER } from './enum'
@@ -20,11 +20,15 @@ import Characters from '../../components/CardList'
 
 const characterList: FC<IProps> = props => {
     let query = FILTER_TYPE.get(ENUM_FILTER.DEFAULT)
+
     const variables: IVariables = {
         offset: 0,
         limit: CHARACTERS_LIMIT,
     }
-    if (props.filter) {
+
+    if (props.location) {
+        variables.filter = getQueryValue(props.location.search, SEARCH_KEY)
+    } else if (props.filter) {
         query = FILTER_TYPE.get(props.filter.type)
         variables.filter = props.filter.value
     }

@@ -34,7 +34,7 @@ const searchResults: FC<IProps> = props => {
                     search,
                 }}
             >
-                {({ loading, error, data, fetchMore }) => {
+                {({ loading, error, data }) => {
                     let UI = []
 
                     if (data) {
@@ -53,7 +53,9 @@ const searchResults: FC<IProps> = props => {
                                                     {key}
                                                     {container && container.total > SEARCH_LIMIT && (
                                                         <Link
-                                                            to={`/${key}?${SEARCH_KEY}=${search}`}
+                                                            to={`/${
+                                                                key === 'characters' ? '' : key
+                                                            }?${SEARCH_KEY}=${search}`}
                                                             className={style['show-more']}
                                                         >
                                                             Show More

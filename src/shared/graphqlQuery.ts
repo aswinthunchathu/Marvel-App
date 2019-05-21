@@ -7,8 +7,8 @@ import { SEARCH_LIMIT } from './constants'
     @params limit: number
 */
 export const FETCH_CHARACTERS = gql`
-    query fetchCharacters($offset: Int!, $limit: Int!) {
-        container(offset: $offset, limit: $limit, orderBy: "-modified")
+    query fetchCharacters($offset: Int!, $limit: Int!, $filter: String) {
+        container(offset: $offset, limit: $limit, orderBy: "-modified", nameStartsWith: $filter)
             @rest(type: "type_characters", path: "/characters?{args}") {
             total
             offset
@@ -104,8 +104,8 @@ export const FETCH_SERIES_BY_CHARACTER_ID = gql`
     @params limit: number
 */
 export const FETCH_COMICS = gql`
-    query fetchComics($offset: Int!, $limit: Int!) {
-        container(offset: $offset, limit: $limit, orderBy: "-modified")
+    query fetchComics($offset: Int!, $limit: Int!, $filter: String) {
+        container(offset: $offset, limit: $limit, orderBy: "-modified", titleStartsWith: $filter)
             @rest(type: "type_comics", path: "/comics?{args}") {
             total
             offset
@@ -174,8 +174,8 @@ export const FETCH_CHARACTERS_BY_COMIC_ID = gql`
     @params limit: number
 */
 export const FETCH_SERIES = gql`
-    query fetchSeries($offset: Int!, $limit: Int!) {
-        container(offset: $offset, limit: $limit, orderBy: "-modified")
+    query fetchSeries($offset: Int!, $limit: Int!, $filter: String) {
+        container(offset: $offset, limit: $limit, orderBy: "-modified", titleStartsWith: $filter)
             @rest(type: "type_series", path: "/series?{args}") {
             total
             offset
@@ -270,7 +270,7 @@ export const FETCH_COMICS_BY_SERIES_ID = gql`
 */
 export const FETCH_SEARCH_RESULTS = gql`
     query fetchSearchResults($search: String!) {
-        characters: container(offset: 0, limit: ${SEARCH_LIMIT}, nameStartsWith: $search)
+        characters: container(offset: 0, limit: ${SEARCH_LIMIT}, nameStartsWith: $search, orderBy: "-modified")
             @rest(type: "type_characters", path: "/characters?{args}") {
             total
             offset
@@ -286,7 +286,7 @@ export const FETCH_SEARCH_RESULTS = gql`
             }
         }
 
-        comics: container(offset: 0, limit: 6, titleStartsWith: $search)
+        comics: container(offset: 0, limit: 6, titleStartsWith: $search, orderBy: "-modified")
             @rest(type: "type_comics", path: "/comics?{args}") {
             total
             offset
@@ -302,7 +302,7 @@ export const FETCH_SEARCH_RESULTS = gql`
             }
         }
 
-        series: container(offset: 0, limit: 6, titleStartsWith: $search)
+        series: container(offset: 0, limit: 6, titleStartsWith: $search, orderBy: "-modified")
             @rest(type: "type_series", path: "/series?{args}") {
             total
             offset
