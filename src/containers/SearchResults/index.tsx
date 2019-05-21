@@ -24,7 +24,7 @@ const searchResults: FC<IProps> = props => {
             <div className="container-fluid">
                 <div className="row">
                     <h2 className="col-12">
-                        <div className={style['heading']}>{`Showing results for the search "${search}"`}</div>
+                        <div className={style['heading']}>{`Showing search results for "${search}"`}</div>
                     </h2>
                 </div>
             </div>
