@@ -44,7 +44,7 @@ class Header extends Component<{}, IState> {
                     <span />
                 </div>
 
-                <CSSTransition in={this.state.open} timeout={300} classNames="slide-left" unmountOnExit>
+                <CSSTransition in={this.state.open} timeout={300} classNames="slide-left">
                     <Sidebar click={this.toggleSideBar}>
                         <NavigationItems onLinkClick={this.toggleSideBar} />
                     </Sidebar>

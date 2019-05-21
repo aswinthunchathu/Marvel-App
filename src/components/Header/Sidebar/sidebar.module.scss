@@ -9,14 +9,18 @@
     top: 0;
     box-shadow: 1px 1px 30px $black;
     z-index: 10;
-    display: flex;
+    display: none;
     flex-direction: column;
+
     @include rem-fallback(width, 250);
 
     @media (max-width: map-get($grid-breakpoints, lg) - 1) {
-        display: block;
         @include rem-fallback(top, 80);
         background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    @media (min-width: map-get($grid-breakpoints, lg)) {
+        display: flex !important;
     }
 
     @media (min-width: map-get($grid-breakpoints, xl)) {
