@@ -13,5 +13,5 @@ export interface IProps {
 export interface IVariables {
     offset: number
     limit: number
-    filterId?: string
+    filter?: string
 }

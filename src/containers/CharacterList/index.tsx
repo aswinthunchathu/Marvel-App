@@ -26,7 +26,7 @@ const characterList: FC<IProps> = props => {
     }
     if (props.filter) {
         query = FILTER_TYPE.get(props.filter.type)
-        variables.filterId = props.filter.value
+        variables.filter = props.filter.value
     }
 
     return (

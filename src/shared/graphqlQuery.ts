@@ -53,8 +53,8 @@ export const FETCH_CHARACTER_BY_ID = gql`
     @params limit: number
 */
 export const FETCH_COMICS_BY_CHARACTER_ID = gql`
-    query fetchComicsByCharacter($filterId: ID!, $offset: Int!, $limit: Int!) {
-        container(characterId: $filterId, offset: $offset, limit: $limit, orderBy: "-modified")
+    query fetchComicsByCharacter($filter: ID!, $offset: Int!, $limit: Int!) {
+        container(characterId: $filter, offset: $offset, limit: $limit, orderBy: "-modified")
             @rest(type: "type_comics_by_character_id", path: "/characters/{args.characterId}/comics?{args}") {
             total
             offset
@@ -79,8 +79,8 @@ export const FETCH_COMICS_BY_CHARACTER_ID = gql`
     @params limit: number
 */
 export const FETCH_SERIES_BY_CHARACTER_ID = gql`
-    query fetchSeriesByCharacterID($filterId: ID!, $offset: Int!, $limit: Int!) {
-        container(characterId: $filterId, offset: $offset, limit: $limit, orderBy: "-modified")
+    query fetchSeriesByCharacterID($filter: ID!, $offset: Int!, $limit: Int!) {
+        container(characterId: $filter, offset: $offset, limit: $limit, orderBy: "-modified")
             @rest(type: "type_series_by_character_id", path: "/characters/{args.characterId}/series?{args}") {
             total
             offset
@@ -149,8 +149,8 @@ export const FETCH_COMIC_BY_ID = gql`
     @params limit: number
 */
 export const FETCH_CHARACTERS_BY_COMIC_ID = gql`
-    query fetchCharactersByComic($filterId: ID!, $offset: Int!, $limit: Int!) {
-        container(comicId: $filterId, offset: $offset, limit: $limit, orderBy: "-modified")
+    query fetchCharactersByComic($filter: ID!, $offset: Int!, $limit: Int!) {
+        container(comicId: $filter, offset: $offset, limit: $limit, orderBy: "-modified")
             @rest(type: "type_characters_by_comics", path: "/comics/{args.comicId}/characters?{args}") {
             total
             offset
@@ -219,8 +219,8 @@ export const FETCH_SERIES_BY_ID = gql`
     @params limit: number
 */
 export const FETCH_CHARACTERS_BY_SERIES_ID = gql`
-    query fetchCharactersBySeries($filterId: ID!, $offset: Int!, $limit: Int!) {
-        container(seriesId: $filterId, offset: $offset, limit: $limit, orderBy: "-modified")
+    query fetchCharactersBySeries($filter: ID!, $offset: Int!, $limit: Int!) {
+        container(seriesId: $filter, offset: $offset, limit: $limit, orderBy: "-modified")
             @rest(type: "type_characters_by_series", path: "/series/{args.seriesId}/characters?{args}") {
             total
             offset
@@ -245,8 +245,8 @@ export const FETCH_CHARACTERS_BY_SERIES_ID = gql`
     @params limit: number
 */
 export const FETCH_COMICS_BY_SERIES_ID = gql`
-    query fetchComicsBySeries($filterId: ID!, $offset: Int!, $limit: Int!) {
-        container(seriesId: $filterId, offset: $offset, limit: $limit, orderBy: "-modified")
+    query fetchComicsBySeries($filter: ID!, $offset: Int!, $limit: Int!) {
+        container(seriesId: $filter, offset: $offset, limit: $limit, orderBy: "-modified")
             @rest(type: "type_comics_by_series", path: "/series/{args.seriesId}/comics?{args}") {
             total
             offset

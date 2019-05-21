@@ -13,6 +13,7 @@ import { Form, InputGroup, Button } from 'react-bootstrap'
 
 import style from './search.module.scss'
 import { IProps, IState } from './types'
+import { SEARCH_KEY } from '../../shared/constants'
 
 class Search extends Component<IProps, IState> {
     state = {
@@ -60,7 +61,7 @@ class Search extends Component<IProps, IState> {
                         </InputGroup>
                     </Form.Group>
                 </Form>
-                {this.state.isSearched && <Redirect to={`${this.props.redirectTo}?key=${this.state.key}`} />}
+                {this.state.isSearched && <Redirect to={`${this.props.redirectTo}?${SEARCH_KEY}=${this.state.key}`} />}
             </Fragment>
         )
     }

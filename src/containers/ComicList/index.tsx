@@ -8,8 +8,8 @@
 import React, { FC } from 'react'
 import { Query } from 'react-apollo'
 
-import { getPageData, getUpdatedPage } from '../../shared/util'
-import { COMICS_LIMIT, COMICS_URL } from '../../shared/constants'
+import { getPageData, getUpdatedPage, getQueryValue } from '../../shared/util'
+import { COMICS_LIMIT, COMICS_URL, SEARCH_KEY } from '../../shared/constants'
 import { IData } from '../../shared/types'
 import { IVariables, IProps } from './types'
 import { ENUM_FILTER, FILTER_TYPE } from './enum'
@@ -23,9 +23,14 @@ const comicList: FC<IProps> = props => {
         offset: 0,
         limit: COMICS_LIMIT,
     }
+
+    if (props.location) {
+        const search = getQueryValue(props.location.search, SEARCH_KEY)
+    }
+
     if (props.filter) {
         query = FILTER_TYPE.get(props.filter.type)
-        variables.filterId = props.filter.value
+        variables.filter = props.filter.value
     }
 
     return (

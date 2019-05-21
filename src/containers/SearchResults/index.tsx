@@ -3,30 +3,21 @@
 */
 
 import React, { FC, Fragment } from 'react'
-import qs from 'qs'
 import { Redirect, Link } from 'react-router-dom'
 import { Query } from 'react-apollo'
 
 import style from './search_results.module.scss'
-import { CHARACTERS_URL, SEARCH_LIMIT } from '../../shared/constants'
+import { CHARACTERS_URL, SEARCH_LIMIT, SEARCH_KEY } from '../../shared/constants'
 import { IProps, IVariables, IData } from './types'
 import { FETCH_SEARCH_RESULTS } from '../../shared/graphqlQuery'
-import { getPageData } from '../../shared/util'
+import { getPageData, getQueryValue } from '../../shared/util'
 
 import ErrorBoundary from '../../hoc/ErrorHandler'
 import WithLoading from '../../hoc/WithLoading'
 import SearchResults from '../../components/CardList'
 
 const searchResults: FC<IProps> = props => {
-    const { key: search } = qs.parse(props.location.search, {
-        ignoreQueryPrefix: true,
-    })
-
-    let query = FETCH_SEARCH_RESULTS
-
-    const variables: IVariables = {
-        search,
-    }
+    const search = getQueryValue(props.location.search, SEARCH_KEY)
 
     return search ? (
         <Fragment>
@@ -37,7 +28,12 @@ const searchResults: FC<IProps> = props => {
                     </h2>
                 </div>
             </div>
-            <Query<IData, IVariables> query={query} variables={variables}>
+            <Query<IData, IVariables>
+                query={FETCH_SEARCH_RESULTS}
+                variables={{
+                    search,
+                }}
+            >
                 {({ loading, error, data, fetchMore }) => {
                     let UI = []
 
@@ -56,7 +52,10 @@ const searchResults: FC<IProps> = props => {
                                                 <div className={style['header']}>
                                                     {key}
                                                     {container && container.total > SEARCH_LIMIT && (
-                                                        <Link to={`/${key}`} className={style['show-more']}>
+                                                        <Link
+                                                            to={`/${key}?${SEARCH_KEY}=${search}`}
+                                                            className={style['show-more']}
+                                                        >
                                                             Show More
                                                         </Link>
                                                     )}
